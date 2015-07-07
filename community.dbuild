@@ -1,6 +1,6 @@
 //
 // Define a set of common settings for all projects, and include
-// all the 2.11 projects. The included file also contains a large set of
+// all the 2.12 projects. The included file also contains a large set of
 // vars definitions, which are used later in this file as well.
 //
 
@@ -13,18 +13,18 @@ include file("common.conf")
 // And the generation of the artifacts more closely related to the Scala compiler.
 //
 build += {
-  extraction-version: "2.11.6"
+  extraction-version: "2.12.0-M1"
   cross-version: disabled
   sbt-version: ${vars.sbt-version-override}
   projects: [
-  // Scala 2.11.x
+  // Scala 2.12.x
   {
     name:  "scala",
     system: assemble
     extra.parts: {
       cross-version: standard
       sbt-version: ${vars.sbt-version-override}
-      extraction-version: "2.11.6"
+      extraction-version: "2.12.0-M1"
       cross-version: disabled
     }
     extra.parts.projects: [
@@ -43,34 +43,6 @@ build += {
         uri: "https://github.com/"${vars.scala-parser-combinators-ref}
       }
     ]
-  }
-
-  ${vars.base} {
-    name: "scala-continuations"
-    uri: "https://github.com/"${vars.scala-continuations-ref}
-    extra.sbt-version: ${vars.sbt-version-override}
-    // Trying to avoid unexplained error on Toolbox based tests: "bad option: -P:continuations:enable"
-    // This is reproducible outside of dbuild, but hard to pin down.
-    // Example: https://gist.github.com/retronym/9122414
-    // Note the plugin JAR was rebuild on inspect `test:test`, even though there was no source change.
-    // After that, the next `test` worked.
-    extra.commands: ["clean", "plugin/compile:package"]
-  }
-
-  ${vars.base} {
-    name: "scala-partest"
-    uri: "https://github.com/"${vars.scala-partest-ref}
-  }
-
-  ${vars.base} {
-    name: scalacheck
-    uri:    "https://github.com/"${vars.scalacheck-ref}
-    extra.run-tests: false
-  }
-
-  ${vars.base} {
-    name: "scala-swing"
-    uri: "https://github.com/"${vars.scala-swing-ref}
   }
 ]
 }
