@@ -4,16 +4,14 @@
 // vars definitions, which are used later in this file as well.
 //
 
-
 vars.base: {
 }
 include file("common.conf")
 
-//
-// And the generation of the artifacts more closely related to the Scala compiler.
-//
+// Scala itself, as built by scripts/jobs/validate/publish-core
+
 build += {
-  extraction-version: ${vars.maven.version.number}
+  extraction-version: ${vars.scala-ref}
   cross-version: disabled
   sbt-version: ${vars.sbt-version}
   space.from: default
@@ -26,37 +24,29 @@ build += {
       extra.parts: {
         cross-version: standard
         sbt-version: ${vars.sbt-version}
-        extraction-version: ${vars.maven.version.number}
+        extraction-version: ${vars.scala-ref}
         cross-version: disabled
       }
       extra.parts.projects: [
         {
           name:   scala-library
           system: aether
-          uri:   "aether:org.scala-lang#scala-library;"${vars.maven.version.number}
+          uri:   "aether:org.scala-lang#scala-library;"${vars.scala-ref}
         }
         {
           name:   scala-reflect
           system: aether
-          uri:   "aether:org.scala-lang#scala-reflect;"${vars.maven.version.number}
+          uri:   "aether:org.scala-lang#scala-reflect;"${vars.scala-ref}
         }
         {
           name:   scala-compiler
           system: aether
-          uri:   "aether:org.scala-lang#scala-compiler;"${vars.maven.version.number}
-        }
-        {
-          name:   scala-xml
-          system: aether
-          uri:   "aether:org.scala-lang.modules#scala-xml_"${vars.scala.binary.version}}";"${vars.scala-xml.version.number}
-        }
-        {
-          name:   scala-parser-combinators
-          system: aether
-          uri:   "aether:org.scala-lang.modules#scala-parser-combinators_"${vars.scala.binary.version}}";"${vars.scala-parser-combinators.version.number}
+          uri:   "aether:org.scala-lang#scala-compiler;"${vars.scala-ref}
         }
       ]
     }
+
+  // rebuild modules
 
   ${vars.base} {
     name: "scala-partest"
@@ -64,8 +54,8 @@ build += {
   }
 
   ${vars.base} {
-    name: scalacheck
-    uri:    "https://github.com/"${vars.scalacheck-ref}
+    name: "scalacheck"
+    uri: "https://github.com/"${vars.scalacheck-ref}
     extra.run-tests: false
   }
 
@@ -73,5 +63,16 @@ build += {
     name: "scala-swing"
     uri: "https://github.com/"${vars.scala-swing-ref}
   }
+
+  ${vars.base} {
+    name: "scala-parser-combinators"
+    uri: "https://github.com/"${vars.scala-parser-combinators-ref}
+  }
+
+  ${vars.base} {
+    name: "scala-xml"
+    uri: "https://github.com/"${vars.scala-xml-ref}
+  }
+
 ]
 }
