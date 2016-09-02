@@ -11,7 +11,7 @@ include file("common.conf")
 // Scala itself, as built by scripts/jobs/validate/publish-core
 
 build += {
-  extraction-version: ${vars.scala-ref}
+  extraction-version: "2.12.0-M5"
   cross-version: disabled
   sbt-version: ${vars.sbt-version}
   space.from: default
@@ -24,7 +24,7 @@ build += {
       extra.parts: {
         cross-version: standard
         sbt-version: ${vars.sbt-version}
-        extraction-version: ${vars.scala-ref}
+        extraction-version: "2.12.0-M5"
         cross-version: disabled
       }
       extra.parts.projects: [
