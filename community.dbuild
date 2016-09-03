@@ -49,29 +49,8 @@ build += {
   // rebuild modules
 
   ${vars.base} {
-    name: "scala-partest"
-    uri: "https://github.com/"${vars.scala-partest-ref}
-  }
-
-  ${vars.base} {
-    name: "scalacheck"
-    uri: "https://github.com/"${vars.scalacheck-ref}
-    extra.run-tests: false
-  }
-
-  ${vars.base} {
     name: "scala-swing"
     uri: "https://github.com/"${vars.scala-swing-ref}
-  }
-
-  ${vars.base} {
-    name: "scala-parser-combinators"
-    uri: "https://github.com/"${vars.scala-parser-combinators-ref}
-  }
-
-  ${vars.base} {
-    name: "scala-xml"
-    uri: "https://github.com/"${vars.scala-xml-ref}
   }
 
 ]
