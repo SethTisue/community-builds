@@ -32,16 +32,19 @@ build += {
           name:   scala-library
           system: aether
           uri:   "aether:org.scala-lang#scala-library;"${vars.scala-ref}
+          set-version: ${vars.scala-ref}
         }
         {
           name:   scala-reflect
           system: aether
           uri:   "aether:org.scala-lang#scala-reflect;"${vars.scala-ref}
+          set-version: ${vars.scala-ref}
         }
         {
           name:   scala-compiler
           system: aether
           uri:   "aether:org.scala-lang#scala-compiler;"${vars.scala-ref}
+          set-version: ${vars.scala-ref}
         }
       ]
     }
