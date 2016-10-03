@@ -400,6 +400,11 @@ build += {
   }
 
   ${vars.base} {
+    name:   "kxbmap-configs"
+    uri:    "http://github.com/kxbmap/configs.git"
+  }
+
+  ${vars.base} {
     name:   "fs2"
     // current "master" as of Sep 2016
     uri:    "http://github.com/functional-streams-for-scala/fs2.git#series/0.9"
