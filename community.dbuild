@@ -96,6 +96,8 @@ build += {
   sbt-version: ${vars.sbt-version}
   extraction-version: ${vars.scala-version}
   cross-version: disabled
+  space.from: default
+  space.to: [ default, scalaz_71, scalaz_72 ]
 
   projects: [
   {
@@ -138,13 +140,16 @@ vars: {
   akka-ref: "https://github.com/akka/akka.git"
 }
 
-//// everything else
+//// default space:
+//// no direct or indirect dependency on any version of scalaz
 
 build += {
   check-missing: [ true, false ]
   cross-version: [ disabled, standard ]
   extraction-version: ${vars.scala-version}
   sbt-version: ${vars.sbt-version}
+  space.from: default
+  space.to: [ default, scalaz_71, scalaz_72 ]
 
   projects: [
 
@@ -207,13 +212,6 @@ build += {
     // For some reason dbuild includes test sources in the javadocs, which trips up javadoc because
     // we use "assert" as an identifier there. We disable doc building to avoid that.
     extra.commands: ${vars.default-commands} [ "set publishArtifact in packageDoc := false" ]
-  }
-
-  ${vars.base} {
-    name: scalaz
-    uri: "https://github.com/scalaz/scalaz.git#series/7.1.x"
-    // [scalaz] [error] Could not run test scalaz.NeedTest: java.lang.AssertionError: false !== true
-    extra.run-tests: false // TODO enable tests
   }
 
   ${vars.base} {
@@ -401,14 +399,6 @@ build += {
   }
 
   ${vars.base} {
-    name:   "scalaprops"
-    // // master uses FreeT from scalaz 7.2, we're on 7.1
-    uri:    "http://github.com/scalaprops/scalaprops.git#0.1.x"
-    // will be needed if we start tracking master. not needed on 0.1.x branch
-    // extra.projects: ["rootJVM"]  // no Scala.js please
-  }
-
-  ${vars.base} {
     name:   "fs2"
     // current "master" as of Sep 2016
     uri:    "http://github.com/functional-streams-for-scala/fs2.git#series/0.9"
@@ -459,12 +449,6 @@ build += {
   }
 
   ${vars.base} {
-    name: "discipline"
-    uri: "https://github.com/typelevel/discipline.git#v0.7"
-    extra.projects: ["disciplineJVM"]  // no Scala.js please
-  }
-
-  ${vars.base} {
     name:   "twitter-util"
     // try master instead if develop proves too fragile?
     uri:    "http://github.com/twitter/util.git#develop"
@@ -489,6 +473,81 @@ build += {
     uri:    "http://github.com/SethTisue/migration-manager.git#2.12-compat"
     // we don't compile sbt plugins
     extra.exclude: ["sbtplugin"]
+  }
+
+  ${vars.base} {
+    name: "twirl"
+    extra.exclude: [ "plugin", "apiJS" ]
+    uri: "https://github.com/playframework/twirl.git#master"
+  }
+
+  ${vars.base} {
+    name: "json4s"
+    uri: "https://github.com/json4s/json4s.git#3.5"  // this is the current "master" branch (as of Oct 2016)
+    extra.projects: ["json4s-native", "json4s-jackson"] // TODO: exclude subprojects we don't want, rather than naming a few we want. probably adding more would work?
+  }
+
+  // TODO: stuck on json4s. (and: when uncommenting, which space will this need to be in?)
+  // ${vars.base} {
+  //   name: "spray"
+  //   uri: "https://github.com/spray/spray.git#v1.3.3"
+  //   extra: ${vars.base.extra} {
+  //     // skip tests for now; see https://github.com/scala/community-builds/issues/110
+  //     run-tests: false
+  //     // disable subprojects depending on shapeless 1
+  //     exclude: ["spray-routing", "spray-routing-tests"]
+  //     // disable running sphinx, it would be great if dbuild
+  //     // oferred a mechanism for excluding particular project (e.g. docs)
+  //     commands: ${vars.default-commands} [
+  //       "set SphinxSupport.sphinxCompile in docs := Seq.empty"
+  //     ]
+  //     // disable parallel execution of tests as a work around for non-deterministic
+  //     // failures, see: https://github.com/scala/community-builds/pull/69#issuecomment-63324597
+  //     settings += "parallelExecution in GlobalScope in Test := false"
+  //   }
+  // }
+
+  ${vars.base} {
+    name:   "scalamock"
+    // TODO forked because specs2 support requires specs2 2.x but we only
+    // have 3.x here now. and because excluding that subproject here isn't enough
+    // (see diffs in the fork for details)
+    uri:    "https://github.com/SethTisue/scalamock.git#community-build-2.12"
+    // not sure why "examples" is also excluded? maybe it has specs2 stuff too?
+    extra.exclude: [ "specs2", "examples" ]
+  }
+
+  ${vars.base} {
+    name: "scalatags"
+    // TODO Scala version checking logic needed a little tweak.
+    // contribute upstream, or see if it's fixed once Haoyi publishes for 2.12
+    uri: "https://github.com/SethTisue/scalatags.git#community-build-2.12"
+    extra.projects: ["scalatagsJVM"]  // no Scala.js please
+  }
+
+]}
+
+//// Scalaz 7.1 space
+//// (including anything that depends directly or indirectly on specs2)
+
+build += {
+  sbt-version: ${vars.sbt-version}
+  extraction-version: ${vars.scala-version}
+  cross-version: disabled
+  space.from: scalaz_71
+  space.to: [ scalaz_71 ]
+
+  projects: [
+
+  ${vars.base} {
+    name: scalaz_71
+    uri: "https://github.com/scalaz/scalaz.git#series/7.1.x"
+  }
+
+  ${vars.base} {
+    name: "discipline"
+    uri: "https://github.com/typelevel/discipline.git#v0.7"
+    extra.projects: ["disciplineJVM"]  // no Scala.js please
   }
 
   ${vars.base} {
@@ -536,11 +595,6 @@ build += {
     uri: "https://github.com/SethTisue/ssl-config.git#be-dbuild-friendly"
   }
 
-  ${vars.base} {
-    name: "spray-json"
-    uri: "https://github.com/spray/spray-json.git"
-  }
-
   // this is separate from "akka" because there is a circular dependency between
   // the akka and ssl-config repos. (akka-http depends on ssl-config-akka which
   // depends on akka-actor)
@@ -564,6 +618,11 @@ build += {
   }
 
   ${vars.base} {
+    name: "spray-json"
+    uri: "https://github.com/spray/spray-json.git"
+  }
+
+  ${vars.base} {
     name:   "scalikejdbc"
     uri:    "http://github.com/scalikejdbc/scalikejdbc.git"
     // don't build sbt plugin
@@ -573,12 +632,6 @@ build += {
   ${vars.base} {
     name:   "scopt"
     uri:    "http://github.com/scopt/scopt.git#scopt3"
-  }
-
-  ${vars.base} {
-    name: "twirl"
-    extra.exclude: [ "plugin", "apiJS" ]
-    uri: "https://github.com/playframework/twirl.git#master"
   }
 
   ${vars.base} {
@@ -607,12 +660,6 @@ build += {
   }
 
   ${vars.base} {
-    name: "json4s"
-    uri: "https://github.com/json4s/json4s.git#3.5"  // this is the current "master" branch (as of Oct 2016)
-    extra.projects: ["json4s-native", "json4s-jackson"] // TODO: exclude subprojects we don't want, rather than naming a few we want. probably adding more would work?
-  }
-
-  ${vars.base} {
     name: "lift-json"
     uri: "https://github.com/lift/framework.git#3.0-M2-release"
     extra.projects: ["lift-json"]
@@ -631,34 +678,34 @@ build += {
     extra.projects: ["ast", "parser", "json4s", "spray"]
   }
 
-  // TODO: stuck on json4s
-  // ${vars.base} {
-  //   name: "spray"
-  //   uri: "https://github.com/spray/spray.git#v1.3.3"
-  //   extra: ${vars.base.extra} {
-  //     // skip tests for now; see https://github.com/scala/community-builds/issues/110
-  //     run-tests: false
-  //     // disable subprojects depending on shapeless 1
-  //     exclude: ["spray-routing", "spray-routing-tests"]
-  //     // disable running sphinx, it would be great if dbuild
-  //     // oferred a mechanism for excluding particular project (e.g. docs)
-  //     commands: ${vars.default-commands} [
-  //       "set SphinxSupport.sphinxCompile in docs := Seq.empty"
-  //     ]
-  //     // disable parallel execution of tests as a work around for non-deterministic
-  //     // failures, see: https://github.com/scala/community-builds/pull/69#issuecomment-63324597
-  //     settings += "parallelExecution in GlobalScope in Test := false"
-  //   }
-  // }
+]}
+
+//// Scalaz 7.2 space
+
+build += {
+  sbt-version: ${vars.sbt-version}
+  extraction-version: ${vars.scala-version}
+  cross-version: disabled
+  space.from: scalaz_72
+  space.to: [ scalaz_72 ]
+
+  projects: [
 
   ${vars.base} {
-    name:   "scalamock"
-    // TODO forked because specs2 support requires specs2 2.x but we only
-    // have 3.x here now. and because excluding that subproject here isn't enough
-    // (see diffs in the fork for details)
-    uri:    "https://github.com/SethTisue/scalamock.git#community-build-2.12"
-    // not sure why "examples" is also excluded? maybe it has specs2 stuff too?
-    extra.exclude: [ "specs2", "examples" ]
+    name: "scalaz_72"
+    uri: "https://github.com/scalaz/scalaz.git#series/7.2.x"
+    extra.projects: ["rootJVM"]  // no Scala.js please
+  }
+
+  ${vars.base} {
+    name:   "scalaprops"
+    uri:    "http://github.com/scalaprops/scalaprops.git"
+    extra.projects: ["rootJVM"]  // no Scala.js please
+  }
+
+  ${vars.base} {
+    name: "kxbmap-configs"
+    uri: "https://github.com/kxbmap/configs.git"
   }
 
 ]}
