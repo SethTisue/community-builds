@@ -124,6 +124,12 @@ build += {
         system: aether
         uri:   "aether:org.scala-lang#scala-compiler;"${vars.scala-version}
       }
+      {
+        set-version: ${vars.scala-version}
+        name:   scalap
+        system: aether
+        uri:   "aether:org.scala-lang#scalap;"${vars.scala-version}
+      }
       // override scalaVersion here since otherwise we get
       // whatever random Scala version the module has
       {
@@ -259,6 +265,8 @@ build += {
     extra.test-tasks: ["compile"]
   }
 
+  // frozen at an October 2016 commit because akka-http doesn't compile
+  // against later commits
   ${vars.base} {
     name: "akka"
     uri:  ${vars.uris.akka-uri}
@@ -637,12 +645,16 @@ build += {
     extra.projects: ["json4s-native", "json4s-jackson"] // TODO: exclude subprojects we don't want, rather than naming a few we want. probably adding more would work?
   }
 
-  ${vars.base} {
-    name: "lift-json"
-    uri:  ${vars.uris.lift-json-uri}
-    // TODO unfork once https://github.com/lift/framework/pull/1812 gets merged
-    extra.projects: ["lift-json"]
-  }
+// commented out because it can't find the scalap jar it needs in our
+// Artifactory -- probably our Artifactory's fault. looking into it.
+// (but do we also need to add a scalap entry up to, alongside scala-
+// reflect and so forth?)
+//  ${vars.base} {
+//    name: "lift-json"
+//    uri:  ${vars.uris.lift-json-uri}
+//    // TODO unfork once https://github.com/lift/framework/pull/1812 gets merged
+//    extra.projects: ["lift-json"]
+//  }
 
   ${vars.base} {
     name: "jawn"
