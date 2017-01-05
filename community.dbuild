@@ -919,8 +919,6 @@ build += {
       // this depends on tut, which we don't have (yet?)
       "docs"
     ]
-    // Failed tests: org.http4s.server.middleware.DefaultHeadSpec
-    extra.test-tasks: "compile"
   }
 
 ]}
