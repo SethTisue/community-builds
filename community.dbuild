@@ -959,4 +959,13 @@ build += {
     extra.exclude: ["plugin"]  // we never build sbt plugins
   }
 
+  ${vars.base} {
+    name: "coursier"
+    uri:  ${vars.uris.coursier-uri}
+    extra.exclude: [
+      "plugin"  // we never build sbt plugins
+      "testsJS", "coreJS" // no Scala.js please
+    ]
+  }
+
 ]}
