@@ -156,6 +156,9 @@ build += {
     extra.exclude: ["scala-parser-combinatorsJS"]
   }
 
+  // frozen at a March 2017 commit before https://github.com/scala/community-builds/issues/493
+  // was introduced.  hopefully Rickard will find a different solution for
+  // https://github.com/rickynils/scalacheck/issues/318
   ${vars.base} {
     name: "scalacheck"
     uri:  ${vars.uris.scalacheck-uri}
@@ -609,14 +612,10 @@ build += {
     uri:  ${vars.uris.play-doc-uri}
   }
 
-  // frozen at 2.6.0-M1 for now, because at the moment (Feb 3 2017),
-  // play-ahc-ws-standalone (which is part of play-ws) doesn't compile
-  // against current master
   ${vars.base} {
     name: "play-json"
     uri:  ${vars.uris.play-json-uri}
-    // uncomment once we're tracking master again
-    // extra.projects: ["play-jsonJVM"]  // no Scala.js plz
+    extra.projects: ["play-jsonJVM"]  // no Scala.js plz
   }
 
   ${vars.base} {
@@ -710,6 +709,10 @@ build += {
       // and anyway we don't want to run benchmarks
       "argonaut-benchmark"
     ]
+    // work around https://github.com/scala/scala-dev/issues/252
+    extra.commands: ${vars.default-commands} [
+      "set unmanagedSourceDirectories in (argonautJVM, Compile) += baseDirectory.value / \"argonaut\" / \"shared\" / \"src\" / \"main\" / \"scala-2.12\""
+    ]
   }
 
   ${vars.base} {
@@ -740,6 +743,12 @@ build += {
     extra.test-tasks: "compile"
   }
 
+  // frozen at a March 2017 commit, because some commit soon after
+  // it broke some version checking logic, resulting in
+  // com.fasterxml.jackson.databind.JsonMappingException when running
+  // tests, not only in this project but also downstream in
+  // twitter-util and scalaj-http.  reported the problem upstream at
+  // https://github.com/FasterXML/jackson-module-scala/issues/319
   ${vars.base} {
     name: "jackson-module-scala"
     uri:  ${vars.uris.jackson-module-scala-uri}
@@ -767,13 +776,6 @@ build += {
   ${vars.base} {
     name: "scala-json-ast"
     uri:  ${vars.uris.scala-json-ast-uri}
-    // but why does scalafmt turn up in libraryDependencies at all?
-    // see https://github.com/olafurpg/scalafmt/issues/485#issuecomment-253601375
-    check-missing: false
-    deps.ignore: [
-      "com.geirsson#scalafmt-cli"
-      "com.geirsson#scalafmt"
-    ]
     // no Scala.js please, and no benchmarks either
     extra.projects: ["scalaJsonASTJVM"]
   }
@@ -825,8 +827,6 @@ build += {
     extra.projects: ["coreJVM", "tckTests"]  // no Scala.js, no benchmarks
   }
 
-  // frozen at a December 2016 commit; reported at
-  // https://github.com/scala/community-builds/issues/473
   ${vars.base} {
     name: "conductr-lib"
     uri:  ${vars.uris.conductr-lib-uri}
@@ -834,7 +834,7 @@ build += {
       // not our Akka version
       "akka23Common", "akka23ConductRBundleLib", "akka23TestLib"
       // we don't have Lagom yet
-      "lagom1ConductRBundleLib"
+      "lagom1JavaConductRBundleLib", "lagom1ScalaConductRBundleLib"
       // not our Play version
       "play23Common", "play23ConductRBundleLib", "play23ConductRClientLib"
       // also not our Play version
@@ -855,18 +855,7 @@ build += {
   ${vars.base} {
     name: "akka-sse"
     uri:  ${vars.uris.akka-sse-uri}
-    extra.exclude: ["akka-sse-jmh"]  // no benchmarking stuff plz
-    // disable scalafmt
-    extra.commands: ${vars.default-commands} [
-      "set every scalafmt := {}"
-    ]
-    // but why does scalafmt turn up in libraryDependencies at all?
-    // see https://github.com/olafurpg/scalafmt/issues/485#issuecomment-253601375
-    check-missing: false
-    deps.ignore: [
-      "com.geirsson#scalafmt-cli"
-      "com.geirsson#scalafmt"
-    ]
+    extra.exclude: ["jmh"]  // no benchmarking stuff plz
   }
 
   // this was added because conductr-lib's Play integration depended on it,
@@ -1000,7 +989,15 @@ build += {
     uri:  ${vars.uris.scalameta-uri}
     // else, bintray stuff goes boom
     extra.options: ["-Dsbt.prohibit.publish=true"]
-    extra.exclude: ["readme"]  // requires scalatex-site which requires Scala.js
+    // requires scalatex-site which requires Scala.js
+    extra.exclude: ["readme"]
+    // use right version-specific source directories regardless of our weird dbuild Scala version numbers
+    extra.commands: [
+      "set unmanagedSourceDirectories in (common, Compile) += (baseDirectory in common).value / \"src\" / \"main\" / \"scala-2.12\""
+      "set unmanagedSourceDirectories in (dialects, Compile) += (baseDirectory in dialects).value / \"src\" / \"main\" / \"scala-2.12\""
+      "set unmanagedSourceDirectories in (scalameta, Compile) += (baseDirectory in scalameta).value / \"src\" / \"main\" / \"scala-2.12\""
+      "set unmanagedSourceDirectories in (scalahost, Compile) += (baseDirectory in scalahost).value / \"src\" / \"main\" / \"scala-2.12.1\""
+    ]
   }
 
   // forked to remove wartremover and coursier
@@ -1040,6 +1037,9 @@ build += {
     name: "ammonite"
     uri:  ${vars.uris.ammonite-uri}
     extra.projects: ["ops"]
+    // not investigated:
+    // [ammonite] [info] test.ammonite.ops.ExampleTests.addUpScalaSize
+    extra.test-tasks: "compile"
   }
 
   ${vars.base} {
