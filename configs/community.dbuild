@@ -1086,4 +1086,13 @@ build += {
     uri:  ${vars.uris.twotails-uri}
   }
 
+  ${vars.base} {
+    name: "refined"
+    uri:  ${vars.uris.refined-uri}
+    // I don't see a project that aggregates just the JVM subprojects,
+    // so, list individual JVM subprojects explicitly.
+    // not including pureconfigJVM (until we have pureconfig, which we should)
+    extra.projects: ["coreJVM", "evalJVM", "scalacheckJVM", "scalazJVM", "scodecJVM"]
+  }
+
 ]}
