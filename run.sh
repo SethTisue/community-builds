@@ -8,6 +8,11 @@ set -o pipefail
 
 export LANG="en_US.UTF-8"
 export HOME="$(pwd)"
+export _JAVA_OPTIONS="-Dscala.classpath.closeZip=true"
+
+touch 0.9
+rm -rf *0.9*
+rm -rf ~/.dbuild/cache-0.9.7-RC1
 
 function latestNightly() {
   url='https://scala-ci.typesafe.com/job/scala-2.12.x-integrate-bootstrap/lastSuccessfulBuild/artifact/jenkins.properties/*view*/'
