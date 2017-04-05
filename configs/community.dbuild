@@ -1091,4 +1091,11 @@ build += {
      uri:  ${vars.uris.scala-gopher-uri}
   }
 
+  // forked (April 2017) for dbuild-friendly scalaVersion handling
+  // (we should contribute upstream)
+  ${vars.base} {
+    name: "pimpathon"
+    uri:  ${vars.uris.pimpathon-uri}
+  }
+
 ]}
