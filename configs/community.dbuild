@@ -359,6 +359,8 @@ build += {
     ]
   }
 
+  // forked (September 2017) for 2.13 friendliness; can be unforked
+  // once https://github.com/sbt/sbinary/pull/10 is merged
   ${vars.base} {
     name: "sbinary"
     uri:  ${vars.uris.sbinary-uri}
