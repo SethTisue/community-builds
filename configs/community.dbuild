@@ -1030,6 +1030,8 @@ build += {
     uri:  ${vars.uris.scalafix-uri}
     extra.exclude: [
       "scalafix-sbt"  // we never build sbt plugins
+      // maybe addable? see https://github.com/scala/community-builds/issues/608
+      "unit"
       // requires scalatex-site which requires Scala.js
       "readme"
       // no Scala.js please
@@ -1141,7 +1143,7 @@ build += {
     extra.projects: ["lensesJVM"]  // no Scala.js plz
   }
 
-  // adding (September 2017) because scalafix's "unit" subproject uses it.
+  // adding (September 2017) because scalafix's "cli" subproject uses it.
   // forked to remove coursier and upgrade sbt-bintray
   ${vars.base} {
     name: "semanticdb-sbt"
@@ -1154,7 +1156,7 @@ build += {
     extra.projects: ["runtime"]
   }
 
-  // adding (September 2017) because scalafix's "unit" subproject uses it.
+  // adding (September 2017) because scalafix's "cli" subproject uses it.
   // forked to modify some version number manipulation code to be
   // dbuild-friendly; we should contribute the change upstream
   ${vars.base} {
@@ -1163,7 +1165,7 @@ build += {
     extra.projects: ["coreJVM", "catsJVM"]  // but not "benchmark"
   }
 
-  // adding (September 2017) because scalafix's "unit" subproject uses it.
+  // adding (September 2017) because scalafix's "cli" subproject uses it.
   // forked to remove coursier.  we forked from the 1.1.x branch, not
   // master, since there are source-incompatible changes on master,
   // but scalafix's dependency is on 1.1.x
