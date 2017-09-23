@@ -1037,8 +1037,6 @@ build += {
     ]
     extra.exclude: [
       "scalafix-sbt"  // we never build sbt plugins
-      // Missing dependency: the library com.github.alexarchambault#case-app
-      "cli"
       // requires scalatex-site which requires Scala.js
       "readme"
       // no Scala.js please
