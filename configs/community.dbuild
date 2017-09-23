@@ -1028,13 +1028,6 @@ build += {
   ${vars.base} {
     name: "scalafix"
     uri:  ${vars.uris.scalafix-uri}
-    // without this, dbuild doesn't pick up that the "unit" subproject
-    // depends on these. I don't know why
-    deps.inject: [
-      "org.scalameta#semanticdb-sbt-runtime"
-      "com.github.alexarchambault#case-app"
-      "org.typelevel#paiges-core"
-    ]
     extra.exclude: [
       "scalafix-sbt"  // we never build sbt plugins
       // requires scalatex-site which requires Scala.js
