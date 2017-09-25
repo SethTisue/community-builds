@@ -109,18 +109,11 @@ build += {
         system: aether
         uri:   "aether:org.scala-lang#scala-compiler;"${vars.scala-version}
       }
-      // override scalaVersion here since otherwise we get
-      // whatever random Scala version the module has
       {
-        name: "scala-xml"
-        uri: "https://github.com/scala/scala-xml.git"
-        extra.commands: ${vars.default-commands} [
-          "set scalaVersion := \""${vars.scala-version}"\""
-          // work around https://github.com/scala/community-builds/issues/575
-          // (in a community build context, we don't need MiMa to run)
-          "set every ScalaModulePlugin.mimaPreviousVersion := None"
-        ]
-        extra.projects: ["xmlJVM"]
+        set-version: "1.0.6"
+        name:   scala-xml
+        system: aether
+        uri:   "aether:org.scala-lang.modules#scala-xml_2.12;1.0.6"
       }
     ]
   }
@@ -137,35 +130,6 @@ build += {
 
   projects: [
 
-  ${vars.base} {
-    name: "scala-parser-combinators"
-    uri:  ${vars.uris.scala-parser-combinators-uri}
-    extra.exclude: ["scala-parser-combinatorsJS"]
-  }
-
-  // if master proves difficult to track, the 0.6.x branch could be
-  // used instead; see discussion at
-  // https://github.com/scala/community-builds/issues/506
-  ${vars.base} {
-    name: "scala-js"
-    uri:  ${vars.uris.scala-js-uri}
-    extra: ${vars.base.extra} {
-      // hopefully avoid intermittent OutOfMemoryErrors with default 1.5G heap?
-      options: ["-Xmx2048m"]
-      projects: [ tools, testSuite, stubs ]
-      commands: ${vars.default-commands} [
-        // - Disable compiler/test because it is very fragile.
-        "set test in (Build.compiler, Test) := {}"
-        // - Disable fatal Scaladoc warnings, also fragile
-        "removeScalacOptions -Xfatal-warnings"
-        // - We disable source map tests to save ourselves a `npm install source-map-support` on the workers.
-        //   Although only `testSuite` actually has tests, dbuild will try to run the tests for all projects
-        //   that `testSuite` depends on (transitively), so we need to set it in a bunch of places.
-        "set Seq(library, testInterface, jUnitRuntime, testSuite).map(p => jsEnv in p := new org.scalajs.jsenv.nodejs.NodeJSEnv(org.scalajs.jsenv.nodejs.NodeJSEnv.Config().withExecutable(\""${vars.node}"\").withSourceMap(false)))"
-      ]
-    }
-  }
-
   // frozen (June 2017) at an April 2017 commit; newer commits
   // broke the scalacheck subproject of specs2
   ${vars.base} {
@@ -174,32 +138,7 @@ build += {
     extra.projects: ["jvm"]  // no Scala.js please
     // because of new unused warnings in 2.12.2
     extra.commands: ${vars.default-commands} [ "removeScalacOptions -Xfatal-warnings" ]
-  }
-
-  ${vars.base} {
-    name: "scalatest"
-    uri:  ${vars.uris.scalatest-uri}
-    extra: ${vars.base.extra} {
-      projects: ["scalatest", "scalactic"]
-      test-tasks: ["compile"] // TODO run tests -- need to exclude browser-based tests somehow
-    }
-  }
-
-  ${vars.base} {
-    name: "scala-partest-interface"
-    uri:  ${vars.uris.scala-partest-interface-uri}
-  }
-
-  ${vars.base} {
-    name: "scala-partest"
-    uri:  ${vars.uris.scala-partest-uri}
-    extra.commands: ${vars.default-commands} [ "removeScalacOptions -Xfatal-warnings" ] # Deprecated optimizer settings
-
-  }
-
-  ${vars.base} {
-    name: "scala-swing"
-    uri:  ${vars.uris.scala-swing-uri}
+    extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
   }
 
 ]}
