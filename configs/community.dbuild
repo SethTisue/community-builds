@@ -130,6 +130,13 @@ build += {
 
   projects: [
 
+  ${vars.base} {
+    name: "scala-parser-combinators"
+    uri:  ${vars.uris.scala-parser-combinators-uri}
+    extra.exclude: ["scala-parser-combinatorsJS"]
+    extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
+  }
+
   // frozen (June 2017) at an April 2017 commit; newer commits
   // broke the scalacheck subproject of specs2
   ${vars.base} {
