@@ -9,6 +9,9 @@ set -o pipefail
 export LANG="en_US.UTF-8"
 export HOME="$(pwd)"
 
+echo "forcing Java 9"
+export JAVA_HOME=$(/usr/libexec/java_home -v 9)
+
 function latestNightly() {
   url='https://scala-ci.typesafe.com/job/scala-2.12.x-integrate-bootstrap/lastSuccessfulBuild/artifact/jenkins.properties/*view*/'
   curl -f -s -L $url | grep ^version= | cut -d= -f2
