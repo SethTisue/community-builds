@@ -162,8 +162,6 @@ build += {
       ]
       projects: [ tools, testSuite, stubs ]
       commands: ${vars.default-commands} [
-        // - Disable compiler/test because it is very fragile.
-        "set test in (Build.compiler, Test) := {}"
         // - Disable fatal Scaladoc warnings, also fragile
         "removeScalacOptions -Xfatal-warnings"
         // - We disable source map tests to save ourselves a `npm install source-map-support` on the workers.
