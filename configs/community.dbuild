@@ -132,7 +132,6 @@ build += {
 //        extra.projects: ["xmlJVM"]
 //        extra.options: [
 //          "-Dsbt.scala.version=2.10.6-SNAPSHOT"
-//          "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"
 //        ]
 //      }
     ]
@@ -154,7 +153,6 @@ build += {
 //     name: "scala-parser-combinators"
 //     uri:  ${vars.uris.scala-parser-combinators-uri}
 //     extra.exclude: ["scala-parser-combinatorsJS"]
-//     extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
 //   }
 
   // frozen (June 2017) at an April 2017 commit; newer commits
@@ -165,7 +163,6 @@ build += {
     extra.projects: ["jvm"]  // no Scala.js please
     // because of new unused warnings in 2.12.2
     extra.commands: ${vars.default-commands} [ "removeScalacOptions -Xfatal-warnings" ]
-//    extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
   }
 
   // needs Scala.js
@@ -174,7 +171,6 @@ build += {
 //     uri:  ${vars.uris.utest-uri}
 //     // no Scala.js plz
 //     extra.projects: ["utestJVM"]
-//     extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
 //   }
 
 ]}
