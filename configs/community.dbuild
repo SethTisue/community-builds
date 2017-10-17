@@ -159,6 +159,8 @@ build += {
         "-Xmx2048m"
         // until sbt 0.13.17 is out
         "-Dsbt.scala.version=2.10.7"
+        // the Scala.js build expects this property to be set
+        "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"
       ]
       projects: [ tools, testSuite, stubs ]
       commands: ${vars.default-commands} [
