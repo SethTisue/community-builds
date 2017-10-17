@@ -115,25 +115,6 @@ build += {
         system: aether
         uri:   "aether:org.scala-lang.modules#scala-xml_2.12;1.0.6"
       }
-//      {
-//        name: "scala-xml"
-//        uri: "https://github.com/scala/scala-xml.git"
-//        // override sbt version here since otherwise we get
-//        // whatever random sbt version the module has
-//        extra.sbt-version: ${vars.sbt-version}
-//        extra.commands: ${vars.default-commands} [
-//          // override scalaVersion here since otherwise we get
-//          // whatever random Scala version the module has
-//          "set scalaVersion := \""${vars.scala-version}"\""
-//          // work around https://github.com/scala/community-builds/issues/575
-//          // (in a community build context, we don't need MiMa to run)
-//          "set every ScalaModulePlugin.mimaPreviousVersion := None"
-//        ]
-//        extra.projects: ["xmlJVM"]
-//        extra.options: [
-//          "-Dsbt.scala.version=2.10.6-SNAPSHOT"
-//        ]
-//      }
     ]
   }
 ]}
@@ -149,11 +130,13 @@ build += {
 
   projects: [
 
-//   ${vars.base} {
-//     name: "scala-parser-combinators"
-//     uri:  ${vars.uris.scala-parser-combinators-uri}
-//     extra.exclude: ["scala-parser-combinatorsJS"]
-//   }
+  ${vars.base} {
+    name: "scala-parser-combinators"
+    uri:  ${vars.uris.scala-parser-combinators-uri}
+    extra.exclude: ["scala-parser-combinatorsJS"]
+    // until sbt 0.13.17 is out
+    extra.options: ["-Dsbt.scala.version=2.10.7"]
+  }
 
   // frozen (June 2017) at an April 2017 commit; newer commits
   // broke the scalacheck subproject of specs2
@@ -163,14 +146,38 @@ build += {
     extra.projects: ["jvm"]  // no Scala.js please
     // because of new unused warnings in 2.12.2
     extra.commands: ${vars.default-commands} [ "removeScalacOptions -Xfatal-warnings" ]
+    // until sbt 0.13.17 is out
+    extra.options: ["-Dsbt.scala.version=2.10.7"]
   }
 
-  // needs Scala.js
-//   ${vars.base} {
-//     name: "utest"
-//     uri:  ${vars.uris.utest-uri}
-//     // no Scala.js plz
-//     extra.projects: ["utestJVM"]
-//   }
+  ${vars.base} {
+    name: "scala-js"
+    uri:  ${vars.uris.scala-js-uri}
+    extra: ${vars.base.extra} {
+      // hopefully avoid intermittent OutOfMemoryErrors with default 1.5G heap?
+      options: [
+        "-Xmx2048m"
+        // until sbt 0.13.17 is out
+        "-Dsbt.scala.version=2.10.7"
+      ]
+      projects: [ tools, testSuite, stubs ]
+      commands: ${vars.default-commands} [
+        // - Disable fatal Scaladoc warnings, also fragile
+        "removeScalacOptions -Xfatal-warnings"
+        // - We disable source map tests to save ourselves a `npm install source-map-support` on the workers.
+        //   Although only `testSuite` actually has tests, dbuild will try to run the tests for all projects
+        //   that `testSuite` depends on (transitively), so we need to set it in a bunch of places.
+        "set Seq(library, testInterface, jUnitRuntime, testSuite).map(p => jsEnv in p := new org.scalajs.jsenv.nodejs.NodeJSEnv(org.scalajs.jsenv.nodejs.NodeJSEnv.Config().withExecutable(\""${vars.node}"\").withSourceMap(false)))"
+      ]
+    }
+  }
+
+  ${vars.base} {
+    name: "utest"
+    uri:  ${vars.uris.utest-uri}
+    // no Scala.js plz
+    extra.projects: ["utestJVM"]
+    extra.options: ["-Dsbt.scala.version=2.10.7"]
+  }
 
 ]}
