@@ -15,7 +15,7 @@ vars: {
 // so that common options or settings can be set by the
 // configuration that includes this common file.
 // Note however that += won't work inside vars.base.
-// It's https://github.com/typesafehub/config/issues/160.
+// It's https://github.com/lightbend/config/issues/160.
 // That's why if you override extra.commands you must
 // explicitly include default-commands.
 
@@ -134,7 +134,8 @@ build += {
     name: "scala-parser-combinators"
     uri:  ${vars.uris.scala-parser-combinators-uri}
     extra.exclude: ["scala-parser-combinatorsJS"]
-    extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
+    // until sbt 0.13.17 is out
+    extra.options: ["-Dsbt.scala.version=2.10.7"]
   }
 
   // frozen (June 2017) at an April 2017 commit; newer commits
@@ -145,19 +146,20 @@ build += {
     extra.projects: ["jvm"]  // no Scala.js please
     // because of new unused warnings in 2.12.2
     extra.commands: ${vars.default-commands} [ "removeScalacOptions -Xfatal-warnings" ]
-    extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
+    // until sbt 0.13.17 is out
+    extra.options: ["-Dsbt.scala.version=2.10.7"]
   }
 
-  // if master proves difficult to track, the 0.6.x branch could be
-  // used instead; see discussion at
-  // https://github.com/scala/community-builds/issues/506
   ${vars.base} {
     name: "scala-js"
     uri:  ${vars.uris.scala-js-uri}
     extra: ${vars.base.extra} {
+      // hopefully avoid intermittent OutOfMemoryErrors with default 1.5G heap?
       options: [
-        // hopefully avoid intermittent OutOfMemoryErrors with default 1.5G heap?
         "-Xmx2048m"
+        // until sbt 0.13.17 is out
+        "-Dsbt.scala.version=2.10.7"
+        // the Scala.js build expects this property to be set
         "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"
       ]
       projects: [ tools, testSuite, stubs ]
@@ -177,7 +179,7 @@ build += {
     uri:  ${vars.uris.utest-uri}
     // no Scala.js plz
     extra.projects: ["utestJVM"]
-    extra.options: ["-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"]
+    extra.options: ["-Dsbt.scala.version=2.10.7"]
   }
 
 ]}
