@@ -13,4 +13,4 @@ rm -rf target-*/extraction || true
 rm -rf target-*/project-builds
 rm -rf target-*/extraction
 
-exit "$STATUS"
+exit $STATUS
