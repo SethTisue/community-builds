@@ -325,6 +325,7 @@ build += {
   ${vars.base} {
     name: "scodec-bits"
     uri:  ${vars.uris.scodec-bits-uri}
+    extra.sbt-version: ${vars.sbt-1-version}
     extra.projects: ["coreJVM"]
   }
 
@@ -460,10 +461,6 @@ build += {
     extra.exclude: ["docs"]
   }
 
-  # frozen at September 2017 commit because cats-effect was failing;
-  # see https://github.com/scala/community-builds/issues/600
-  # November 2017: unfreeze attempt at https://github.com/scala/community-builds/pull/624
-  # failed, but we should try again in a month or two, something like that
   ${vars.base} {
     name: "cats"
     uri:  ${vars.uris.cats-uri}
@@ -757,6 +754,8 @@ build += {
     extra.projects: ["fansiJVM"]  // no Scala.js
   }
 
+  // switched (January 2018) to a fork where the cats dependency is upgraded;
+  // we can unfork once https://github.com/typelevel/algebra/pull/207 lands
   ${vars.base} {
     name: "algebra"
     uri:  ${vars.uris.algebra-uri}
@@ -806,10 +805,6 @@ build += {
     extra.test-tasks: ["compile"]
   }
 
-  // adding (September 2017) because scalafix's "cli" subproject uses it.
-  // forked to modify some version number manipulation code to be
-  // dbuild-friendly; we can unfork once
-  // https://github.com/typelevel/paiges/pull/74 is merged
   ${vars.base} {
     name: "paiges"
     uri:  ${vars.uris.paiges-uri}
@@ -884,16 +879,6 @@ build += {
     extra.test-tasks: ["compile"]
   }
 
-  // OlegYch's fork is the one that hangs out in
-  // scala/scala (Gitter) and #scala (IRC)
-  ${vars.base} {
-    name: "multibot"
-    uri:  ${vars.uris.multibot-uri}
-    // linter isn't essential to the build
-    deps.ignore: ["org.psywerx.hairyfotr#linter"]
-    check-missing: false
-  }
-
   // dependency of scaladex
   ${vars.base} {
     name: "nscala-time"
@@ -923,6 +908,14 @@ build += {
     name: "paradox"
     uri:  ${vars.uris.paradox-uri}
     extra.exclude: ["plugin", "themePlugin", "genericTheme"]
+  }
+
+  // not (as of January 2018 anyway) an actively maintained project, so it's
+  // droppable if it acts up
+  ${vars.base} {
+    name: "scala-sculpt"
+    extra.sbt-version: ${vars.sbt-1-version}
+    uri:  ${vars.uris.scala-sculpt-uri}
   }
 
 ]}
