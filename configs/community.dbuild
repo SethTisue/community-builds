@@ -15,6 +15,8 @@
 # * jawn-fs2, http4s: depend on fs2
 # * everything in the scalameta_1 and scalameta_2 spaces
 #   (scalameta is too fragile, for now, for 2.13)
+# * was failing, but even investigating can wait:
+#   twotails, scallop, twirl, slick, scalatest-tests, scalariform
 #
 # we should attempt to add them back later in the 2.13 cycle (by
 # copying their entries from the 2.12 config)
@@ -242,26 +244,6 @@ build += {
     extra.projects: ["scalatest", "scalactic"]
   }
 
-  // this is almost 1M lines of code, but it needn't be green (or be compiled at all)
-  // for dependent projects to proceed, so let's keep it separate.  forked (December 2017)
-  // because of trouble with scalacticMacro -- the latter has publishing disabled
-  ${vars.base} {
-    name: "scalatest-tests"
-    uri:  ${vars.uris.scalatest-uri}
-    extra.exclude: [
-      // we already built these above
-      "scalatest", "scalactic", "scalacticMacro"
-      // no Scala.js plz
-      "commonTestJS", "examplesJS", "scalacticJS", "scalacticMacroJS", "scalacticTestJS"
-      "scalatestAppJS", "scalatestJS", "scalatestTestJS"
-      // [scalatest-tests] [info] *** 5 SUITES ABORTED ***
-      // [scalatest-tests] [info] *** 29 TESTS FAILED ***
-      "examples"
-    ]
-    // needs extra heap to even compile
-    extra.options: ["-Xmx3072m"]
-  }
-
   ${vars.base} {
     name: "scala-partest-interface"
     uri:  ${vars.uris.scala-partest-interface-uri}
@@ -380,42 +362,9 @@ build += {
     ]
   }
 
-  // freeze (October 2017) at August 2017 commit predating upgrade
-  // to sbt 1;
-  // we can't unfreeze until we have an sbt 1.0.x release that
-  // works with Scala 2.13 (https://github.com/sbt/sbt/issues/3427)
-  ${vars.base} {
-    name: "scalariform"
-    uri: ${vars.uris.scalariform-uri}
-    extra.commands: ${vars.default-commands} [
-      // - Disable fatal Scaladoc warnings, too fragile
-      "removeScalacOptions -Xfatal-warnings"
-    ]
-  }
-
   ${vars.base} {
     name: "scala-async"
     uri:  ${vars.uris.scala-async-uri}
-  }
-
-  ${vars.base} {
-    name: "slick"
-    uri:  ${vars.uris.slick-uri}
-    deps.inject: ${vars.base.deps.inject} [
-      // without this dbuild doesn't pick up that one of the subprojects has this dependency.
-      // it doesn't even make sense; it seems to me that testNGSettings should not be adding
-      // a dependency of the plugin to the libraryDependencies of the test code.
-      // the line in question is:
-      //   https://github.com/sbt/sbt-testng-interface/blob/ca730f705f48af2139f39bc726b474afec072738/plugin/src/main/scala/de/johoop/testngplugin/TestNGPlugin.scala#L44
-      // I think it's a confusion of levels, but maybe I'm missing something. - ST 8/27/15
-      "de.johoop#sbt-testng-interface"
-    ]
-    extra.exclude: [
-      // unless we exclude, it looks for an Ornate dependency here
-      "root"
-      // disable fragile tests (https://github.com/scala/community-builds/issues/12#issuecomment-149941055)
-      "osgitests"
-    ]
   }
 
   ${vars.base} {
@@ -627,12 +576,6 @@ build += {
     name: "scopt"
     uri:  ${vars.uris.scopt-uri}
     extra.projects: ["scoptJVM"]  // no Scala.js plz
-  }
-
-  ${vars.base} {
-    name: "twirl"
-    uri:  ${vars.uris.twirl-uri}
-    extra.exclude: [ "plugin", "apiJS" ]
   }
 
   ${vars.base} {
@@ -853,17 +796,6 @@ build += {
     ]
   }
 
-  // others are not depending on this yet ("not ready for general
-  // population yet", says Owein in March 2017) but I was interested
-  // in including it anyway just to have a few more compiler plugins
-  // in the build, it's an underrepresented category.  we can freeze
-  // or drop it if it proves to be trouble
-  ${vars.base} {
-    name: "twotails"
-    uri:  ${vars.uris.twotails-uri}
-    extra.sbt-version: ${vars.sbt-1-version}
-  }
-
   ${vars.base} {
     name: "scala-gopher"
     uri:  ${vars.uris.scala-gopher-uri}
@@ -947,14 +879,6 @@ build += {
     check-missing: false
     // (January 2018) "recursiveADT2" test fails
     extra.test-tasks: ["compile"]
-  }
-
-  // dependency of scala-debugger. we track the develop branch, since
-  // master seems neglected/outdated
-  ${vars.base} {
-    name: "scallop"
-    uri:  ${vars.uris.scallop-uri}
-    extra.projects: ["jvm"]  // no Scala.js or Scala Native plz
   }
 
   // OlegYch's fork is the one that hangs out in
