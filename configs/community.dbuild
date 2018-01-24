@@ -17,6 +17,7 @@
 #   (scalameta is too fragile, for now, for 2.13)
 # * was failing, but even investigating can wait:
 #   twotails, scallop, twirl, slick, scalatest-tests, scalariform
+#   (and its dependency scalastyle)
 # * stopped compiling, not investigated: jackson-module-scala
 #   (also removed its dependency elastic4s)
 #
@@ -843,12 +844,6 @@ build += {
       // because of new inferred-Any warnings in 2.12.4 (PR 5990)
       "removeScalacOptions -Xfatal-warnings"
     ]
-  }
-
-  ${vars.base} {
-    name: "scalastyle"
-    uri: ${vars.uris.scalastyle-uri}
-    extra.options: ["-Dscalastyle.publish-ivy-only=true"]
   }
 
   // dependency of pureconfig
