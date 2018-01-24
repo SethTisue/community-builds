@@ -205,6 +205,8 @@ build += {
     extra.exclude: ["scala-parser-combinatorsJS"]
   }
 
+  // forked (January 2018) waiting for this PR to be merged from 0.6.x onto master:
+  //   https://github.com/scala-js/scala-js/pull/3270
   // if master proves difficult to track, the 0.6.x branch could be
   // used instead; see discussion at
   // https://github.com/scala/community-builds/issues/506
