@@ -198,7 +198,6 @@ rm -rf target-*/project-builds
 rm -rf target-*/extraction
 
 # lines-of-code report
-cd cloc-report
-sbt -error "run ../dbuild-${DBUILDVERSION}/dbuild.out"
+./ClocReport.scala dbuild-${DBUILDVERSION}/dbuild.out
 
 exit $STATUS
