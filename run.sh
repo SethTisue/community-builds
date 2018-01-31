@@ -198,6 +198,7 @@ rm -rf target-*/project-builds
 rm -rf target-*/extraction
 
 # lines-of-code report
-./ClocReport.scala dbuild-${DBUILDVERSION}/dbuild.out
+cd cloc-report
+./sbt -sbt-create -Dsbt.version=1.1.0 -Dsbt.main.class=sbt.ScriptMain -error ClocReport.scala ../dbuild-${DBUILDVERSION}/dbuild.out
 
 exit $STATUS

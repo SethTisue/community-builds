@@ -1,5 +1,3 @@
-#!/usr/bin/env sbt -Dsbt.version=1.1.0 -Dsbt.main.class=sbt.ScriptMain -debug
-
 // there's sometimes an extra "[info]" in the line, so we have to be careful
 val Regex = """\[([^\]]+)\] (\[info\] )?\*\* COMMUNITY BUILD LINE COUNT: (\d+)""".r
 
