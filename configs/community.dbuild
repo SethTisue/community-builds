@@ -364,6 +364,8 @@ build += {
     extra.commands: ${vars.default-commands} [
       // https://github.com/scala/community-builds/issues/373
       "set every apiURL := None"
+      // sbt 1 + scala-xml dependency = boom; see scala/community-builds#679
+      "set every conflictWarning := ConflictWarning.disable"
     ]
   }
 
@@ -594,6 +596,10 @@ build += {
     name: "kind-projector"
     uri:  ${vars.uris.kind-projector-uri}
     extra.sbt-version: ${vars.sbt-1-version}
+    extra.commands: ${vars.default-commands} [
+      // sbt 1 + scala-xml dependency = boom; see scala/community-builds#679
+      "set every conflictWarning := ConflictWarning.disable"
+    ]
   }
 
   ${vars.base} {
@@ -863,6 +869,10 @@ build += {
     // no Scala.js please, and no benchmarks either
     extra.projects: ["scalaJsonJVM"]
     check-missing: false  // ignore missing scalafmt
+    extra.commands: ${vars.default-commands} [
+      // sbt 1 + scala-xml dependency = boom; see scala/community-builds#679
+      "set every conflictWarning := ConflictWarning.disable"
+    ]
   }
 
   ${vars.base} {
@@ -1071,6 +1081,10 @@ build += {
     name: "twotails"
     uri:  ${vars.uris.twotails-uri}
     extra.sbt-version: ${vars.sbt-1-version}
+    extra.commands: ${vars.default-commands} [
+      // sbt 1 + scala-xml dependency = boom; see scala/community-builds#679
+      "set every conflictWarning := ConflictWarning.disable"
+    ]
   }
 
   ${vars.base} {
