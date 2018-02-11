@@ -1473,6 +1473,15 @@ build += {
     extra.projects: ["autowireJVM"]  // no Scala.js plz
   }
 
+  // dependency of Scaladex
+  ${vars.base} {
+    name: "akka-http-json"
+    uri:  ${vars.uris.akka-http-json-uri}
+    extra.sbt-version: ${vars.sbt-1-version}
+    // for now we only attempt to build the single subproject Scaladex needs
+    extra.projects: ["akka-http-json4s"]
+  }
+
   // frozen (February 2018) at an October 2017 commit; see
   // https://github.com/scala/community-builds/issues/682
   ${vars.base} {
