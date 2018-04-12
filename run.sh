@@ -11,6 +11,7 @@
 set -e
 set -o pipefail
 
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
 export LANG="en_US.UTF-8"
 export HOME="$(pwd)"
 
