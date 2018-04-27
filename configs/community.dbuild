@@ -151,27 +151,51 @@ build += {
     extra.commands: ${vars.default-commands} [ "removeScalacOptions -Xfatal-warnings" ]
   }
 
+  // since the community build is JVM-only, other projects only depend scala-js
+  // in order to get stubs.  building all of Scala.js and running its tests
+  // takes a while, so let's save ourselves some time and build the stubs
+  // separately.  not only that, but we use a frozen SHA, since the stubs
+  // hardly ever change, so we can save time by not rebuilding downstream projects
+  // everytime anything anywhere in the whole repo changes
+  ${vars.base} {
+    name: "scala-js-stubs"
+    uri:  ${vars.uris.scala-js-stubs-uri}
+    extra.projects: ["stubs"]
+    extra.commands: ${vars.default-commands} [
+      // too fragile
+      "removeScalacOptions -Xfatal-warnings"
+    ]
+    extra.options: [
+      // the Scala.js build expects this property to be set
+      "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9_0_4"
+    ]
+  }
+
+  // if master proves difficult to track, the 0.6.x branch could be
+  // used instead; see discussion at
+  // https://github.com/scala/community-builds/issues/506
   ${vars.base} {
     name: "scala-js"
     uri:  ${vars.uris.scala-js-uri}
-    extra: ${vars.base.extra} {
+    extra.options: [
       // hopefully avoid intermittent OutOfMemoryErrors with default 1.5G heap?
-      options: [
-        "-Xmx2048m"
-        // the Scala.js build expects this property to be set
-        "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9_0_4"
-      ]
-      // not really sure how this list was arrived at
-      projects: [ io, logging, linker, testSuite, stubs ]
-      commands: ${vars.default-commands} [
-        // - Disable fatal Scaladoc warnings, also fragile
-        "removeScalacOptions -Xfatal-warnings"
-        // - We disable source map tests to save ourselves a `npm install source-map-support` on the workers.
-        //   Although only `testSuite` actually has tests, dbuild will try to run the tests for all projects
-        //   that `testSuite` depends on (transitively), so we need to set it in a bunch of places.
-        "set Seq(library, testInterface, jUnitRuntime, testSuite).map(p => jsEnv in p := new org.scalajs.jsenv.nodejs.NodeJSEnv(org.scalajs.jsenv.nodejs.NodeJSEnv.Config().withExecutable(\""${vars.node}"\").withSourceMap(false)))"
-      ]
-    }
+      "-Xmx2048m"
+      // the Scala.js build expects this property to be set
+      "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9_0_4"
+    ]
+    // not really sure how this list was arrived at
+    extra.projects: [ "io", "logging", "linker", "testSuite" ]
+    // exclude it here because we build it separately in scala-js-stubs
+    extra.exclude: ["stubs"]
+    extra.commands: ${vars.default-commands} [
+      // - Disable fatal Scaladoc warnings, too fragile
+      "removeScalacOptions -Xfatal-warnings"
+      // - We disable source map tests to save ourselves a `npm install source-map-support` on the workers.
+      //   Although only `testSuite` actually has tests, dbuild will try to run the tests for all projects
+      //   that `testSuite` depends on (transitively), so we need to set it in a bunch of places.
+      "set Seq(library, testInterface, jUnitRuntime, testSuite).map(p => jsEnv in p := new org.scalajs.jsenv.nodejs.NodeJSEnv(org.scalajs.jsenv.nodejs.NodeJSEnv.Config().withExecutable(\""${vars.node}"\").withSourceMap(false)))"
+      "set MyScalaJSPlugin.wantSourceMaps in testSuite := false"
+    ]
   }
 
   ${vars.base} {
