@@ -30,7 +30,7 @@ include file(".dbuild/resolvers.conf")
 
 vars {
   default-commands: []
-  sbt-version: "0.13.16"
+  sbt-version: "0.13.17"
 }
 
 //// compiler options manipulation
@@ -134,8 +134,11 @@ build += {
     name: "scala-parser-combinators"
     uri:  ${vars.uris.scala-parser-combinators-uri}
     extra.exclude: ["scala-parser-combinatorsJS"]
-    // until sbt 0.13.17 is out
-    extra.options: ["-Dsbt.scala.version=2.10.7"]
+    extra.commands: ${vars.base.extra.commands} [
+      // work around https://github.com/scala/community-builds/issues/575
+      // (in a community build context, we don't need MiMa to run)
+      "set every ScalaModulePlugin.mimaPreviousVersion := None"
+    ]
   }
 
   // frozen (June 2017) at an April 2017 commit; newer commits
@@ -146,8 +149,6 @@ build += {
     extra.projects: ["jvm"]  // no Scala.js please
     // because of new unused warnings in 2.12.2
     extra.commands: ${vars.default-commands} [ "removeScalacOptions -Xfatal-warnings" ]
-    // until sbt 0.13.17 is out
-    extra.options: ["-Dsbt.scala.version=2.10.7"]
   }
 
   ${vars.base} {
@@ -157,12 +158,11 @@ build += {
       // hopefully avoid intermittent OutOfMemoryErrors with default 1.5G heap?
       options: [
         "-Xmx2048m"
-        // until sbt 0.13.17 is out
-        "-Dsbt.scala.version=2.10.7"
         // the Scala.js build expects this property to be set
-        "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9"
+        "-Dscala.ext.dirs=/Users/tisue/.sbt/0.13/java9-rt-ext-oracle_corporation_9_0_4"
       ]
-      projects: [ tools, testSuite, stubs ]
+      // not really sure how this list was arrived at
+      projects: [ io, logging, linker, testSuite, stubs ]
       commands: ${vars.default-commands} [
         // - Disable fatal Scaladoc warnings, also fragile
         "removeScalacOptions -Xfatal-warnings"
@@ -179,7 +179,6 @@ build += {
     uri:  ${vars.uris.utest-uri}
     // no Scala.js plz
     extra.projects: ["utestJVM"]
-    extra.options: ["-Dsbt.scala.version=2.10.7"]
   }
 
 ]}
