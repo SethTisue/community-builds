@@ -1579,6 +1579,36 @@ build += {
     extra.projects: ["baseJVM", "effectJVM", "metaJVM"]
   }
 
+  // dependency of giter8
+  // forked (May 2018) to use dbuild-friendly sbt-bintray version.
+  // we can unfork if https://github.com/bmc/scalasti/pull/15 gets merged
+  ${vars.base} {
+    name: "scalasti"
+    uri:  ${vars.uris.scalasti-uri}
+  }
+
+  // dependency of giter8
+  // forked (May 2018) to use dbuild-friendly sbt-bintray version.
+  // we can unfork if https://github.com/bmc/grizzled-scala/pull/13 gets merged
+  ${vars.base} {
+    name: "grizzled"
+    uri:  ${vars.uris.grizzled-uri}
+  }
+
+  // dependency of giter8
+  // forked (May 2018) to use dbuild-friendly sbt-bintray version.
+  // we can unfork if https://github.com/bmc/classutil/pull/26 gets merged
+  ${vars.base} {
+    name: "classutil"
+    uri:  ${vars.uris.classutil-uri}
+  }
+
+  ${vars.base} {
+    name: "giter8"
+    uri:  ${vars.uris.giter8-uri}
+    extra.exclude: ["plugin", "scaffold"]  // these are sbt plugins
+  }
+
 ]}
 
 //// space: jawn_0_10
