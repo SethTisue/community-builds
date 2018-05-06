@@ -649,17 +649,11 @@ build += {
     extra.projects: ["coreJVM", "examplesJVM"] // no Scala.js please
   }
 
-  // if this starts giving us trouble, it would be OK to just drop it,
-  // as per Mathias's comments at https://github.com/sirthias/parboiled/pull/100
-  // ("it's quite unmaintained. Also, I don't think there are any real users left")
-  // We have parboiled2 below.
   ${vars.base} {
     name: "parboiled"
     uri:  ${vars.uris.parboiled-uri}
+    extra.sbt-version: ${vars.sbt-1-version}
     extra.projects: ["parboiled-scala"]
-    // test failure is of long standing; not worth investigating, since the
-    // project is moribund
-    extra.test-tasks: ["compile"]
   }
 
   ${vars.base} {
@@ -1607,8 +1601,6 @@ build += {
   }
 
   // dependency of giter8
-  // forked (May 2018) to use dbuild-friendly sbt-bintray version.
-  // we can unfork if https://github.com/bmc/classutil/pull/26 gets merged
   ${vars.base} {
     name: "classutil"
     uri:  ${vars.uris.classutil-uri}
