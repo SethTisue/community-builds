@@ -1188,12 +1188,7 @@ build += {
     extra.test-tasks: ["compile"]
   }
 
-  // adding (April 2017) because scalameta now depends on it
-  // forked/frozen (September 2017) because scalameta uses 0.6.2
-  // but newer commits are source-incompatible. oh, and also
-  // zinc expects the older version, too.
-  // the fork, here, is in order to include a utest version bump
-  // (since utest also made source-incompatible changes)
+  // dependency of scalameta
   ${vars.base} {
     name: "scalapb"
     uri:  ${vars.uris.scalapb-uri}
@@ -1202,10 +1197,7 @@ build += {
     extra.projects: ["runtimeJVM"]
   }
 
-  // adding (April 2017) because scalameta depends on it
-  // (indirectly via scalapb).  frozen (December 2017) at
-  // July 2017 commit before package name change, since we
-  // we have scalapb frozen too
+  // dependency of scalameta (indirectly via scalapb)
   ${vars.base} {
     name: "scalapb-lenses"
     uri:  ${vars.uris.scalapb-lenses-uri}
@@ -1656,7 +1648,7 @@ build += {
     extra.commands: ${vars.default-commands} [
       "set unmanagedSourceDirectories in (commonJVM, Compile) += (baseDirectory in commonJVM).value / \"src\" / \"main\" / \"scala-2.12\""
       "set unmanagedSourceDirectories in (dialectsJVM, Compile) += (baseDirectory in dialectsJVM).value / \"src\" / \"main\" / \"scala-2.12\""
-      "set unmanagedSourceDirectories in (semanticdbScalac, Compile) += (baseDirectory in semanticdbScalac).value / \"src\" / \"main\" / \"scala-2.12.6\""
+      "set unmanagedSourceDirectories in (semanticdbScalacCore, Compile) += (baseDirectory in semanticdbScalacCore).value / \"src\" / \"main\" / \"scala-2.12.6\""
     ]
   }
 
