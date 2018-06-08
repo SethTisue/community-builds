@@ -475,6 +475,7 @@ build += {
       "akka-actor"  // because we already built it in "akka"
       "akka-bench-jmh"  // we'd have to add a resolver to get the JMH dependency, and we prefer not to run benchmarks here anyway
     ]
+    extra.test-tasks: ["compile"]
   }
 
   ${vars.base} {
@@ -1645,27 +1646,17 @@ build += {
     check-missing: false
   }
 
-  // forked (updated September 2017) to remove coursier.
-  // refreshing the fork should be approached with caution;
-  // see Olafur's remarks at
-  // https://github.com/scala/community-builds/issues/499#issuecomment-287307613
-  // about the instability of both scalameta and scalafix.
   ${vars.base} {
     name: "scalameta"
     uri:  ${vars.uris.scalameta-uri}
-    // else, bintray stuff goes boom
-    extra.options: ["-Dsbt.prohibit.publish=true"]
-    extra.projects: ["scalametaJVM", "contribJVM", "semanticdbScalac"]  // no Scala.js
-    extra.exclude: [
-      // we never build sbt plugins or benchmarks
-      "benchmarks"
-    ]
+    // holy cow there are a lot of subprojects. it's not super clear what's important
+    // to include.  this seems to pull in the main stuff.
+    extra.projects: ["semanticdbScalacPlugin"]
     // use right version-specific source directories regardless of our weird dbuild Scala version numbers
     extra.commands: ${vars.default-commands} [
       "set unmanagedSourceDirectories in (commonJVM, Compile) += (baseDirectory in commonJVM).value / \"src\" / \"main\" / \"scala-2.12\""
       "set unmanagedSourceDirectories in (dialectsJVM, Compile) += (baseDirectory in dialectsJVM).value / \"src\" / \"main\" / \"scala-2.12\""
-      "set unmanagedSourceDirectories in (scalametaJVM, Compile) += (baseDirectory in scalametaJVM).value / \"src\" / \"main\" / \"scala-2.12\""
-      "set unmanagedSourceDirectories in (semanticdbScalac, Compile) += (baseDirectory in semanticdbScalac).value / \"src\" / \"main\" / \"scala-2.12.5\""
+      "set unmanagedSourceDirectories in (semanticdbScalac, Compile) += (baseDirectory in semanticdbScalac).value / \"src\" / \"main\" / \"scala-2.12.6\""
     ]
   }
 
@@ -2028,11 +2019,11 @@ build += {
 
 ]}
 
-//// space: metaconfig_new
+//// space: metaconfig_old
 
 build += {
 
-  space: scala.main.jawn_0_10.metaconfig_new
+  space: scala.main.jawn_0_10.metaconfig_old
 
   check-missing: [ true, false ]
   cross-version: [ disabled, standard ]
@@ -2040,6 +2031,22 @@ build += {
   sbt-version: ${vars.sbt-version}
 
   projects: [
+
+  // dependency of scalafmt, frozen version scalafmt expects
+  ${vars.base} {
+    name: "metaconfig-old"
+    uri:  ${vars.uris.metaconfig-old-uri}
+    extra.projects: ["metaconfig-hoconJVM", "metaconfig-typesafe-config"]  // no Scala.js plz
+    // I guess dbuild is getting confused by the extra _1.13?
+    deps.ignore: ["com.github.alexarchambault#scalacheck-shapeless"]
+    deps.inject: ${vars.base.deps.inject} [
+      "com.github.alexarchambault#scalacheck-shapeless_1.13"
+    ]
+    check-missing: false
+    extra.settings: ${vars.base.extra.settings} [
+      "conflictWarning in ThisBuild := ConflictWarning.disable"
+    ]
+  }
 
   // forked (June 2018) to disable IntelliJ stuff
   ${vars.base} {
@@ -2053,30 +2060,13 @@ build += {
     ]
   }
 
-  // dependency of scalafmt. frozen at an old version because that's what
-  // scalafmt expects
-  ${vars.base} {
-    name: "metaconfig-new"
-    uri:  ${vars.uris.metaconfig-new-uri}
-    extra.projects: ["metaconfig-hoconJVM", "metaconfig-typesafe-config"]  // no Scala.js plz
-    // I guess dbuild is getting confused by the extra _1.13?
-    deps.ignore: ["com.github.alexarchambault#scalacheck-shapeless"]
-    deps.inject: ${vars.base.deps.inject} [
-      "com.github.alexarchambault#scalacheck-shapeless_1.13"
-    ]
-    check-missing: false
-    extra.settings: ${vars.base.extra.settings} [
-      "conflictWarning in ThisBuild := ConflictWarning.disable"
-    ]
-  }
-
 ]}
 
 //// space: metaconfig-old
 
 build += {
 
-  space: scala.main.jawn_0_10.metaconfig_old
+  space: scala.main.jawn_0_10.metaconfig_new
 
   check-missing: [ true, false ]
   cross-version: [ disabled, standard ]
@@ -2098,10 +2088,10 @@ build += {
     extra.projects: ["runtime"]
   }
 
-  // dependency of scalafix, frozen (June 2018) at v0.8.3 (the version scalafix uses)
+  // frozen at version scalafix expects
   ${vars.base} {
-    name: "metaconfig-old"
-    uri:  ${vars.uris.metaconfig-old-uri}
+    name: "metaconfig-new"
+    uri:  ${vars.uris.metaconfig-new-uri}
     extra.projects: ["metaconfig-hoconJVM", "metaconfig-typesafe-config"]  // no Scala.js plz
     // I guess dbuild is getting confused by the extra _1.13?
     deps.ignore: ["com.github.alexarchambault#scalacheck-shapeless"]
@@ -2114,29 +2104,11 @@ build += {
     ]
   }
 
-  // (here in this space because of ammonite-ops dependency)
-  // forked (refreshed September 2017) to remove coursier
-  // caution, refreshing the fork any further can be problematic;
-  // see Olafur's remarks at
-  // https://github.com/scala/community-builds/issues/499#issuecomment-287307613
-  // about the instability of both scalameta and scalafix
+  // here in this space because testkit depends on ammonite-ops
   ${vars.base} {
     name: "scalafix"
     uri:  ${vars.uris.scalafix-uri}
-    extra.exclude: [
-      // we never build sbt plugins
-      "scalafix-sbt"
-      // requires scalatex-site which requires Scala.js
-      "readme"
-      // no Scala.js please
-      "coreJS", "diffJS"
-      // Scala 2.10 based
-      "testsInputSbt"
-      // do I *look* like Dotty?
-      "testsOutputDotty"
-      // can't expand macros compiled by previous versions of Scala
-      "testsOutputSbt"
-    ]
+    extra.projects: ["cli", "coreJVM", "diffJVM", "reflect", "test-utils", "testkit", "testsInput", "testsOutput", "testsShared", "unit"]
   }
 
 ]}
