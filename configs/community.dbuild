@@ -1773,7 +1773,7 @@ build += {
     name: "scalafix"
     uri:  ${vars.uris.scalafix-uri}
     extra.sbt-version: ${vars.sbt-1-version}
-    extra.exclude: ["website", "testsOutputDotty"]
+    extra.exclude: ["unit", "website", "testsOutputDotty"]
   }
 
 ]}
