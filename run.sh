@@ -15,7 +15,7 @@ export LANG="en_US.UTF-8"
 export HOME="$(pwd)"
 
 # Defaults
-scala_version_default="2.13.0-pre-511c02c"  # Jan 3
+scala_version_default="2.13.0-pre-16cd97e-SNAPSHOT"  # https://github.com/scala/scala/pull/7580
 scala_version="$scala_version_default"
 root_dir=$(pwd)
 config_dir="configs"
