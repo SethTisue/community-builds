@@ -193,6 +193,10 @@ build += {
       // work around https://github.com/scala/community-builds/issues/575
       // (in a community build context, we don't need MiMa to run)
       "set every ScalaModulePlugin.mimaPreviousVersion := None"
+      // I have absolutely no idea why this would only be required in the
+      // community build context, but without it, we get
+      // java.lang.NoClassDefFoundError: org/hamcrest/SelfDescribing
+      "set libraryDependencies in junit += \"org.hamcrest\" % \"hamcrest-core\" % \"1.3\" % \"test\""
     ]
   }
 
