@@ -289,11 +289,7 @@ build += {
     // allow building on JDK 11
     extra.options: ["-Dscalameta.allow-any-jdk"]
     extra.projects: [
-      // holy cow there are a lot of subprojects. it's not super clear what's important
-      // to include.  this is the main thing:
-      "semanticdbScalacPlugin"
-      // and I empirically found scalafix and/or scalafmt to need:
-      "testkit", "contribJVM", "symtab", "metapJVM"
+      "semanticdbScalacCore"
     ]
     // use right version-specific source directories regardless of our weird dbuild Scala version numbers
     extra.commands: ${vars.default-commands} [
