@@ -100,8 +100,8 @@ vars.base.extra.commands = ${vars.default-commands}
 
 //// count lines of code
 
-vars.base.extra.settings = ["""libraryDependencies in ThisBuild += compilerPlugin("com.lightbend" %% "cloc-plugin" % "0")"""]
-vars.base.deps.inject: ["com.lightbend#cloc-plugin"]
+vars.base.extra.settings = []
+vars.base.deps.inject: []
 
 //// cache
 
@@ -128,10 +128,6 @@ build += {
   space: scala
 
   projects: [
-  {
-    name: "cloc-plugin"
-    uri:  "https://github.com/SethTisue/cloc-plugin.git"
-  }
   {
     name:  "scala"
     system: assemble

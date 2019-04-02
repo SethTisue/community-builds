@@ -1,6 +1,6 @@
 object Report extends App {
   def log = io.Source.fromFile(args(0))
-  ClocReport(log)
+  // ClocReport(log)
   SuccessReport(log)
 }
 
