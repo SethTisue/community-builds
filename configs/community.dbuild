@@ -320,6 +320,7 @@ build += {
     // other projects aren't pertinent or errored out (not investigated)
     extra.projects: ["specbaseJVM", "lawkitJVM", "scalatestJVM", "macrosJVM", "platformJVM", "testkitJVM"]
     extra.commands: ${vars.base.extra.commands} [
+      "appendScalacOptions -Ymacro-annotations"
       "removeDependency org.scalamacros paradise"
     ]
   }
