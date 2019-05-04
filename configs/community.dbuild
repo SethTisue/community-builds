@@ -336,7 +336,6 @@ build += {
     uri:  ${vars.uris.wartremover-uri}
     extra.exclude: ["sbt-plugin"]
     deps.ignore: ["org.scala-sbt#scripted-plugin"]
-    check-missing: false
   }
 
   // frozen at v1.6.0 tag because dependencies have historically been fragile.
@@ -357,9 +356,12 @@ build += {
     // ApplicativeSuite.  the repo's own .jvmopts has 6g
     extra.options: ["-Xmx6g"]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
+    extra.commands: ${vars.base.extra.commands} [
+      "removeDependency org.spire-math kind-projector"
+      """set libraryDependencies in ThisBuild += compilerPlugin("org.typelevel" %% "kind-projector" % "0.10.0")"""
+    ]
   }
 
   ${vars.base} {
@@ -367,7 +369,6 @@ build += {
     uri:  ${vars.uris.kittens-uri}
     extra.projects: ["coreJVM"]  // sorry, Scala.js
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -392,7 +393,6 @@ build += {
     extra.options: ["-Dbintray.user=dummy", "-Dbintray.pass=dummy"]
     // ignore missing scripted-sbt (https://github.com/sbt/sbt/issues/3917 ?)
     deps.ignore: ["org.scala-sbt#scripted-sbt"]
-    check-missing: false
   }
 
   ${vars.base} {
@@ -654,7 +654,6 @@ build += {
     // * akka.http.impl.engine.client.HostConnectionPoolSpec
     extra.test-tasks: ["compile"]
     // spray org change
-    check-missing: false
     deps.ignore: ["io.spray#spray-json"]
     deps.inject: ${vars.base.deps.inject} ["io.crashbox#spray-json"]
   }
@@ -714,7 +713,6 @@ build += {
       "scalafmtOnCompile in ThisBuild := false"
       "scalafmtOnCompile in Sbt := false"
     ]
-    check-missing: false  // ignore missing scalafmt
   }
 
   ${vars.base} {
@@ -779,7 +777,6 @@ build += {
     uri:  ${vars.uris.scalaprops-uri}
     extra.sbt-version: ${vars.sbt-0-13-version}
     extra.projects: ["scalapropsJVM"]  // no Scala.js please
-    check-missing: false  // ignore missing scalafmt
   }
 
   // frozen at v1.2.0 tag for now, perhaps excessively cautiously; we might
@@ -789,7 +786,6 @@ build += {
     uri:  ${vars.uris.cats-effect-uri}
     extra.projects: ["coreJVM", "lawsJVM"]  // no Scala.js plz
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -803,7 +799,6 @@ build += {
       "set every gpgWarnOnFailure := true"
     ]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -825,7 +820,6 @@ build += {
       "set every gpgWarnOnFailure := true"
     ]
     // spray org change
-    check-missing: false
     deps.ignore: ["io.spray#spray-json"]
     deps.inject: ${vars.base.deps.inject} ["io.crashbox#spray-json"]
   }
@@ -850,7 +844,6 @@ build += {
       "coreJS", "monixJS", "catsEffectJS"
     ]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -897,7 +890,6 @@ build += {
     extra.exclude: ["sbtplugin"]
     // ignore missing scripted-sbt (https://github.com/sbt/sbt/issues/3917 ?)
     deps.ignore: ["org.scala-sbt#scripted-sbt"]
-    check-missing: false
   }
 
   ${vars.base} {
@@ -905,7 +897,6 @@ build += {
     uri:  ${vars.uris.mouse-uri}
     extra.projects: ["crossJVM"]  // no Scala.js please
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -954,7 +945,6 @@ build += {
     extra.exclude: ["mapper-generator"]
     // ignore missing scripted-sbt (https://github.com/sbt/sbt/issues/3917 ?)
     deps.ignore: ["org.scala-sbt#scripted-sbt"]
-    check-missing: false
   }
 
   ${vars.base} {
@@ -975,7 +965,6 @@ build += {
     uri:  ${vars.uris.twirl-uri}
     extra.exclude: ["plugin", "apiJS"]
     deps.ignore: ["org.scala-sbt#scripted-plugin"]
-    check-missing: false
   }
 
   ${vars.base} {
@@ -1036,7 +1025,6 @@ build += {
       "Play-Microbenchmark" // out of scope (and besides, requires Play-Integration-Test)
     ]
     deps.ignore: ["org.scala-sbt#scripted-plugin"]
-    check-missing: false
   }
 
   // 3.6 is the current stable branch (as of March 2019);
@@ -1089,7 +1077,6 @@ build += {
     // try to enable more subprojects?
     extra.projects: ["coreJVM", "macrosJVM", "lawJVM", "genericJVM"]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -1114,7 +1101,6 @@ build += {
     extra.commands: ${vars.default-commands} [
       "set every scalafmtOnCompile := false"
     ]
-    check-missing: false  // ignore missing scalafmt
     // Known test failures: https://github.com/sirthias/scala-ssh/issues/38
     extra.test-tasks: "compile"
   }
@@ -1123,7 +1109,6 @@ build += {
     name: "scalameter"
     uri:  ${vars.uris.scalameter-uri}
     extra.sbt-version: ${vars.sbt-0-13-version}
-    check-missing: false
     deps.ignore: [
       // doesn't support 2.12 (yet?)
       "org.mongodb#casbah"
@@ -1141,7 +1126,6 @@ build += {
     uri:  ${vars.uris.scalajson-uri}
     // no Scala.js please, and no benchmarks either
     extra.projects: ["scalaJsonJVM"]
-    check-missing: false  // ignore missing scalafmt
   }
 
   ${vars.base} {
@@ -1170,7 +1154,6 @@ build += {
     // no Scala.js, no benchmarks.
     extra.projects: ["coreJVM"]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -1321,7 +1304,6 @@ build += {
       "animateJVM", "coreJVM", "java2d", "exploreJVM", "imageJVM", "turtleJVM"  // no Scala.js plz
     ]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -1353,7 +1335,6 @@ build += {
     uri: ${vars.uris.play-webgoat-uri}
     // not sure how this gets pulled in but it's just doc not code, I think?
     // so let's just ignore that it's missing
-    check-missing: false
     deps.ignore: ["com.typesafe.play#play-omnidoc"]
   }
 
@@ -1374,7 +1355,6 @@ build += {
       "scalafmtOnCompile in ThisBuild := false"
       "scalafmtOnCompile in Sbt := false"
     ]
-    check-missing: false  // ignore missing scalafmt
     // DefaultWatchServiceSpec fails on MacOS only, see
     // https://github.com/scala/community-builds/pull/714
     extra.test-tasks: ["compile"]
@@ -1459,7 +1439,6 @@ build += {
       "set libraryDependencies in core += \"com.typesafe.akka\" %% \"akka-testkit\" % \"0.0.0\" % Test"
     ]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} [
       "org.typelevel#kind-projector"
@@ -1471,7 +1450,6 @@ build += {
     name: "paradox"
     uri:  ${vars.uris.paradox-uri}
     extra.exclude: ["plugin", "themePlugin", "genericTheme"]
-    check-missing: false  // ignore missing scripted-sbt
     extra.commands: ${vars.default-commands} [
       // flaky test, reported at https://github.com/lightbend/paradox/issues/229
       "set excludeFilter in (Test, unmanagedSources) in tests := HiddenFileFilter || \"VarsDirectiveSpec.scala\""
@@ -1529,7 +1507,6 @@ build += {
     name: "scala-sculpt"
     uri:  ${vars.uris.scala-sculpt-uri}
     // spray org change
-    check-missing: false
     deps.ignore: ["io.spray#spray-json"]
     deps.inject: ${vars.base.deps.inject} ["io.crashbox#spray-json"]
   }
@@ -1592,10 +1569,6 @@ build += {
     name: "scalacheck-shapeless"
     uri:  ${vars.uris.scalacheck-shapeless-uri}
     extra.projects: ["coreJVM", "testJVM"]  // no Scala.js plz
-    // weird missing self-dependency in testJVM project: "the library
-    // com.github.alexarchambault#scalacheck-shapeless is not provided
-    // (in space "default") by any project in this configuration file."
-    check-missing: false
     // (January 2018) "recursiveADT2" test fails
     extra.test-tasks: ["compile"]
     // hopefully avoid intermittent OutOfMemoryErrors with default 1.5G heap?
@@ -1611,7 +1584,6 @@ build += {
     deps.inject: ${vars.base.deps.inject} [
       "com.github.alexarchambault#scalacheck-shapeless_1.13"
     ]
-    check-missing: false
     extra.settings: ${vars.base.extra.settings} [
       "conflictWarning in ThisBuild := ConflictWarning.disable"
     ]
@@ -1704,7 +1676,6 @@ build += {
     // changed their dependency yet
     deps.ignore: ["org.spire-math#spire"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#spire"]
-    check-missing: false
     // tests don't compile, could be a ScalaCheck 1.13 vs 1.14 thing?
     // see https://github.com/scala/community-builds/pull/722
     extra.run-tests: false
@@ -1716,7 +1687,6 @@ build += {
     uri:  ${vars.uris.multibot-uri}
     // linter isn't essential to the build
     deps.ignore: ["org.psywerx.hairyfotr#linter"]
-    check-missing: false
   }
 
   // forked off v4.0.0-M11 since that's what scalafix currently (Sep 2 2018) expects
@@ -1762,7 +1732,6 @@ build += {
     ]
     // ignore missing scripted-sbt. don't know why
     deps.ignore: ["org.scala-sbt#scripted-sbt"]
-    check-missing: false
   }
 
   ${vars.base} {
@@ -1780,7 +1749,6 @@ build += {
     deps.inject: ${vars.base.deps.inject} [
       "com.github.alexarchambault#scalacheck-shapeless_1.13"
     ]
-    check-missing: false
     extra.settings: ${vars.base.extra.settings} [
       "conflictWarning in ThisBuild := ConflictWarning.disable"
     ]
@@ -1828,7 +1796,6 @@ build += {
       ["libraryDependencies += \"javax.xml.bind\" % \"jaxb-api\" % \"2.3.0\""]
     ]
     // only used by ScalafixImplSuite and ToolClasspathSuite
-    check-missing: false
     deps.ignore: ["com.geirsson#coursier-small"]
   }
 
@@ -1872,7 +1839,6 @@ build += {
     name: "pascal"
     uri:  ${vars.uris.pascal-uri}
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -1886,7 +1852,6 @@ build += {
     ]
     // ignore missing scripted-sbt (https://github.com/sbt/sbt/issues/3917 ?)
     deps.ignore: ["org.scala-sbt#scripted-sbt"]
-    check-missing: false
   }
 
   // dependency of scribe
@@ -1936,7 +1901,6 @@ build += {
     // omitted: rojoma-v3, rojoma, benchmark, argonaut
     extra.projects: ["ast", "parser", "json4s", "spray"]
     // spray org change
-    check-missing: false
     deps.ignore: ["io.spray#spray-json"]
     deps.inject: ${vars.base.deps.inject} ["io.crashbox#spray-json"]
   }
@@ -1954,7 +1918,6 @@ build += {
     extra.sbt-version: ${vars.sbt-0-13-version}
     extra.exclude: ["benchmark"]
     // spray org change
-    check-missing: false
     deps.ignore: ["io.spray#spray-json"]
     deps.inject: ${vars.base.deps.inject} ["io.crashbox#spray-json"]
   }
@@ -1965,7 +1928,6 @@ build += {
     name: "sbt-util"
     uri:  ${vars.uris.sbt-util-uri}
     extra.options: ["-Dbintray.user=dummy", "-Dbintray.pass=dummy"]
-    check-missing: false  // ignore missing scalafmt
     extra.commands: ${vars.default-commands} [
       "set every scalafmtOnCompile := false"
     ]
@@ -1981,7 +1943,6 @@ build += {
       "scalafmtOnCompile in ThisBuild := false"
       "scalafmtOnCompile in Sbt := false"
     ]
-    check-missing: false  // ignore missing scalafmt
   }
 
   ${vars.base} {
@@ -2003,7 +1964,6 @@ build += {
       // many failed tests with "sbt.internal.inc.InvalidComponent: The Scala compiler and library could not be retrieved"
       "set executeTests in zinc in Test := Tests.Output(TestResult.Passed, Map(), Iterable())"
     ]
-    check-missing: false  // ignore missing scalafmt
   }
 
   // currently sbt and its modules are frozen and/or forked, since
@@ -2033,7 +1993,6 @@ build += {
       // (fixable I guess, but also seems maybe out-of-scope-ish anyway)
       "vscodePlugin"
     ]
-    check-missing: false  // ignore missing scalafmt
     // flaky tests are segregated
     extra.test-tasks: ["safeUnitTests"]
     extra.commands: ${vars.default-commands} [
@@ -2172,7 +2131,6 @@ build += {
     // omitted: benchmark
     extra.projects: ["ast", "parser", "json4s", "spray", "play"]
     // spray org change
-    check-missing: false
     deps.ignore: ["io.spray#spray-json"]
     deps.inject: ${vars.base.deps.inject} ["io.crashbox#spray-json"]
   }
@@ -2213,7 +2171,6 @@ build += {
     uri:  ${vars.uris.unique-uri}
     extra.projects: ["coreJVM"]  // no docs, no Scala.js
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -2224,7 +2181,6 @@ build += {
     uri:  ${vars.uris.vault-uri}
     extra.projects: ["coreJVM"]  // no docs, no Scala.js
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -2266,7 +2222,6 @@ build += {
     // waiting (January 2018) on https://github.com/47deg/github4s/issues/178
     extra.test-tasks: "compile"
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -2288,7 +2243,6 @@ build += {
       // I guess dbuild is getting confused by the extra _1.13
       "com.github.alexarchambault#scalacheck-shapeless_1.13"
     ]
-    check-missing: false
     extra.commands: ${vars.default-commands} [
       // not sure why we get these errors unless we turn them off
       "set every conflictWarning := ConflictWarning.disable"
@@ -2321,7 +2275,6 @@ build += {
     uri:  ${vars.uris.decline-uri}
     extra.projects: ["declineJVM", "refinedJVM"]  // no Scala.js, no doc
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -2337,7 +2290,6 @@ build += {
       "scalaz", "zio", "asyncHttpClientBackendZio"
     ]
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -2356,7 +2308,6 @@ build += {
     extra.options: ["-Dbintray.user=dummy", "-Dbintray.pass=dummy"]
     // ignore missing scripted-sbt (https://github.com/sbt/sbt/issues/3917 ?)
     deps.ignore: ["org.scala-sbt#scripted-sbt"]
-    check-missing: false
   }
 
   // dependency of circe-derivation
@@ -2396,7 +2347,6 @@ build += {
     ]
     extra.exclude: ["docs", "doobie"]  // out of scope ("doobie" is just an aggregation, and causes missing-tut error)
     // kind-projector org change
-    check-missing: false
     deps.ignore: ["org.spire-math#kind-projector"]
     deps.inject: ${vars.base.deps.inject} ["org.typelevel#kind-projector"]
   }
@@ -2410,7 +2360,6 @@ build += {
       "tsec-libsodium"  // java.lang.UnsatisfiedLinkError: no sodiumjni in java.library.path
       "tsec-examples"  // depends on tsec-libsodium
     ]
-    check-missing: false  // ignore missing scalafmt
   }
 
   ${vars.base} {
