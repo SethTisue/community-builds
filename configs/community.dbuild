@@ -527,6 +527,11 @@ build += {
       // [scalatest-tests] [info] *** 5 SUITES ABORTED ***
       // [scalatest-tests] [info] *** 29 TESTS FAILED ***
       "examples"
+      // out of scope
+      "scalatestTestDotty", "scalacticTestDotty", "commonTestDotty", "scalatestDotty", "scalacticDotty"
+      // out of scope
+      "scalatestAppNative", "scalacticTestNative", "scalatestTestNative", "commonTestNative", "scalatestNative"
+      "scalacticNative", "scalacticMacroNative"
     ]
     // needs extra heap to even compile
     extra.options: ["-Xmx3072m"]
