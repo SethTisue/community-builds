@@ -2343,9 +2343,6 @@ build += {
   ${vars.base} {
     name: "circe"
     uri:  ${vars.uris.circe-uri}
-    // failed compilation on 1.3; not investigated
-    // Symbol 'type io.circe.java8.time.JavaTimeDecoders' is missing from the classpath
-    extra.sbt-version: ${vars.sbt-1-2-version}
     extra.projects: [
       // easy
       "coreJVM", "numbersJVM"
@@ -2564,10 +2561,6 @@ build += {
   ${vars.base} {
     name: "circe-jackson"
     uri:  ${vars.uris.circe-jackson-uri}
-    // test failures on 1.3; not investigated
-    // [circe-jackson] [error] Test suite io.circe.jackson.JacksonParserSuite failed with java.lang.ClassNotFoundException: io.circe.jackson.package$.
-    // [circe-jackson] [error] This may be due to the ClassLoaderLayeringStrategy (TestDependencies) used by your task.
-    extra.sbt-version: ${vars.sbt-1-2-version}
     // there are some others, but for now, just trying to get github4s green again
     extra.projects: ["jackson28"]
   }
