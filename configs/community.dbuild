@@ -25,7 +25,6 @@ build += {
         uri:   "aether:org.scala-lang#scala-compiler;2.12.8"
       }
       {
-        set-version: 2.12.8
         name:   scala-xml
         system: aether
         uri:   "aether:org.scala-lang.modules#scala-xml_2.12;1.0.6"
@@ -44,7 +43,6 @@ build += {
   {
     name: "scala-parser-combinators"
     uri: "https://github.com/scala/scala-parser-combinators.git#1.1.x"
-    extra.options: ["-Dgjggfjkg=foo2"]
     extra.projects: ["scala-parser-combinators"]
     extra.commands: ["set every ScalaModulePlugin.mimaPreviousVersion := None"]
     extra.run-tests: false
