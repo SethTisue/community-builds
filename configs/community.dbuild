@@ -86,14 +86,14 @@ set commands ++= {
     Command.args("removeDependency", "<org> <artifact>")(removeDependency))
 }
 """
-vars.default-commands += "appendScalacOptions "${vars.scalac-opts}
-vars.default-commands += "removeScalacOptions -Xfatal-warnings"
+//vars.default-commands += "appendScalacOptions "${vars.scalac-opts}
+//vars.default-commands += "removeScalacOptions -Xfatal-warnings"
 vars.base.extra.commands = ${vars.default-commands}
 
 //// count lines of code
 
-vars.base.extra.settings = ["""libraryDependencies in ThisBuild += compilerPlugin("com.lightbend" %% "cloc-plugin" % "0.0.2")"""]
-vars.base.deps.inject: ["com.lightbend#cloc-plugin"]
+vars.base.extra.settings = []
+vars.base.deps.inject: []
 
 //// cache
 
@@ -120,10 +120,6 @@ build += {
   space: scala
 
   projects: [
-  {
-    name: "cloc-plugin"
-    uri:  "https://github.com/SethTisue/cloc-plugin.git"
-  }
   {
     name:  "scala"
     system: assemble
@@ -193,12 +189,15 @@ build += {
   ${vars.base} {
     name: "scala-parser-combinators"
     uri:  ${vars.uris.scala-parser-combinators-uri}
+    extra.options: ["-Dgjggfjkg=foo2"]
     extra.projects: ["scala-parser-combinators"]  // JVM only
     extra.commands: ${vars.base.extra.commands} [
       // work around https://github.com/scala/community-builds/issues/575
       // (in a community build context, we don't need MiMa to run)
       "set every ScalaModulePlugin.mimaPreviousVersion := None"
+      "set `scala-parser-combinatorsJVM` / Compile / doc / sources := List()"
     ]
+    extra.run-tests: false
   }
 
 ]}
