@@ -37,7 +37,6 @@ build += {
     name: "scala-parser-combinators"
     uri: "https://github.com/scala/scala-parser-combinators.git#1.1.x"
     extra.projects: ["scala-parser-combinators"]
-    extra.commands: ["set every ScalaModulePlugin.mimaPreviousVersion := None"]
     extra.run-tests: false
   }
 ]}
