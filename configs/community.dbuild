@@ -3,7 +3,6 @@ build += {
   {
     name:  "scala"
     system: assemble
-    cross-version: binary
     extra.parts.projects: [
       {
         set-version: 2.13.0
