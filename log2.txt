@@ -1,0 +1,709 @@
+~/community.212 % ./run.sh -l                                                                             [2.12.x|✚1…1]
+removing temporary files...
+re-run as:
+version=2.12.10-bin-a5b0aed ./run.sh
+dbuild version: 0.9.16
+dbuild config file: configs/community.dbuild
+dbuild-0.9.16/bin/dbuild  -l configs/community.dbuild
+[cloc-plugin] --== Extracting dependencies for cloc-plugin ==--
+[cloc-plugin] Fetching https://github.com/SethTisue/cloc-plugin.git
+[cloc-plugin] into /Users/tisue/community.212/clones-0.9.16/7344523fe3bf6872882558a04c75feb1cd89b43a-cloc-plugin
+[cloc-plugin] Took: 00h 00m 00.3s
+[cloc-plugin] Cloning /Users/tisue/community.212/clones-0.9.16/7344523fe3bf6872882558a04c75feb1cd89b43a-cloc-plugin
+[cloc-plugin] to /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/a53bd69b68bb45352466a5d8235ef3b370c60f21
+[cloc-plugin] Took: 00h 00m 00.0s
+[cloc-plugin] Fetching /Users/tisue/community.212/clones-0.9.16/7344523fe3bf6872882558a04c75feb1cd89b43a-cloc-plugin
+[cloc-plugin] into /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/a53bd69b68bb45352466a5d8235ef3b370c60f21
+[cloc-plugin] Took: 00h 00m 00.0s
+[cloc-plugin] Commit: a61e70d0b2c0439b65d0d40e846e36d03750b9d9
+[cloc-plugin] The following subprojects will be built in project cloc-plugin: default-sbt-project
+[cloc-plugin] --== End Extracting dependencies for cloc-plugin ==--
+[scala] --== Extracting dependencies for scala ==--
+[scala] ----------
+[scala] Resolving part: scala-library
+[scala] ----------
+[scala] Resolving part: scala-reflect
+[scala] ----------
+[scala] Resolving part: scala-compiler
+[scala] ----------
+[scala] Resolving part: scala-xml
+[scala-xml] Fetching https://github.com/scala/scala-xml.git
+[scala-xml] into /Users/tisue/community.212/clones-0.9.16/0bd742ccf34fb2065ef8822789603c5b6932fab5-scala-xml
+[scala-xml] Took: 00h 00m 00.3s
+[scala-xml] Cloning /Users/tisue/community.212/clones-0.9.16/0bd742ccf34fb2065ef8822789603c5b6932fab5-scala-xml
+[scala-xml] to /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/33810cd4d2e669eed2d966af9e8bf842759ed8e3/projects/6a4e84fc514f102c93c09f0a80583194dd6e8b4d
+[scala-xml] Took: 00h 00m 00.0s
+[scala-xml] Fetching /Users/tisue/community.212/clones-0.9.16/0bd742ccf34fb2065ef8822789603c5b6932fab5-scala-xml
+[scala-xml] into /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/33810cd4d2e669eed2d966af9e8bf842759ed8e3/projects/6a4e84fc514f102c93c09f0a80583194dd6e8b4d
+[scala-xml] Took: 00h 00m 00.2s
+[scala] The following subprojects will be built in project scala: xml
+[scala] --== End Extracting dependencies for scala ==--
+[scala-parser-combinators] --== Extracting dependencies for scala-parser-combinators ==--
+[scala-parser-combinators] Fetching https://github.com/scala/scala-parser-combinators.git
+[scala-parser-combinators] into /Users/tisue/community.212/clones-0.9.16/74685214534720a482747a89074e8321fa250226-scala-parser-combinators
+[scala-parser-combinators] Took: 00h 00m 00.4s
+[scala-parser-combinators] Cloning /Users/tisue/community.212/clones-0.9.16/74685214534720a482747a89074e8321fa250226-scala-parser-combinators
+[scala-parser-combinators] to /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5
+[scala-parser-combinators] Took: 00h 00m 00.0s
+[scala-parser-combinators] Fetching /Users/tisue/community.212/clones-0.9.16/74685214534720a482747a89074e8321fa250226-scala-parser-combinators
+[scala-parser-combinators] into /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5
+[scala-parser-combinators] Took: 00h 00m 00.1s
+[scala-parser-combinators] Commit: fc94acb313c3c187cf837b337f1800b44f662cec
+[scala-parser-combinators] Extracting dependencies for: scala-parser-combinators
+[scala-parser-combinators] Using Scala 2.12.10-bin-a5b0aed during extraction.
+[scala-parser-combinators] Using sbt version: 1.3.0-RC3
+[scala-parser-combinators:error] Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=640m; support was removed in 8.0
+[scala-parser-combinators] [info] Updated file /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5/project/build.properties: set sbt.version to 1.3.0-RC3
+[scala-parser-combinators] [info] Loading settings for project root-2d0cf2347c14538e1307cea743ddbe70873e24f5-build-build from ÿÿÿÿÿÿÿÿÿÿ~~~~dbuild~defs.sbt ...
+[scala-parser-combinators] [info] Loading project definition from /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5/project/project
+[scala-parser-combinators] [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+[scala-parser-combinators] [info] Loading settings for project root-2d0cf2347c14538e1307cea743ddbe70873e24f5-build from ÿÿÿÿÿÿÿÿÿÿ~~~~dbuild~defs.sbt,plugins.sbt ...
+[scala-parser-combinators] [info] Loading project definition from /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5/project
+[scala-parser-combinators] [info] Resetting onLoad... in one scope
+[scala-parser-combinators] [info] Loading project definition from /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5/project
+[scala-parser-combinators] [info] Dependencies among subprojects:
+[scala-parser-combinators] [info] default-sbt-project -> 
+[scala-parser-combinators] [info] Aggregates of subprojects:
+[scala-parser-combinators] [info] default-sbt-project -> 
+[scala-parser-combinators] [info] Building graph...
+[scala-parser-combinators] [info] sorting...
+[scala-parser-combinators] [info] These subprojects will be built: default-sbt-project
+[scala-parser-combinators] [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+[scala-parser-combinators:error] /Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5/build.sbt:19: warning: method libraryJar in trait ScalaInstance is deprecated: see corresponding Javadoc for more information.
+[scala-parser-combinators:error]     apiMappings += (scalaInstance.value.libraryJar ->
+[scala-parser-combinators:error]                                         ^
+[scala-parser-combinators] [info] Loading settings for project root from ÿÿÿÿÿÿÿÿÿÿ~~~~dbuild~defs.sbt,build.sbt ...
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5/)
+[scala-parser-combinators] [info] Setting extraction Scala version to 2.12.10-bin-a5b0aed in 6 scopes
+[scala-parser-combinators] [info] Resetting onLoad... in one scope
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/extraction/1d267db921fc54edec1cbdbfd78dd9825f8926f5/projects/2d0cf2347c14538e1307cea743ddbe70873e24f5/)
+[scala-parser-combinators] [info] Dependencies among subprojects:
+[scala-parser-combinators] [info] root -> 
+[scala-parser-combinators] [info] scala-parser-combinatorsNative -> 
+[scala-parser-combinators] [info] scala-parser-combinatorsJS -> 
+[scala-parser-combinators] [info] scala-parser-combinators -> 
+[scala-parser-combinators] [info] Aggregates of subprojects:
+[scala-parser-combinators] [info] root -> scala-parser-combinatorsJS,scala-parser-combinators,scala-parser-combinatorsNative
+[scala-parser-combinators] [info] scala-parser-combinatorsNative -> 
+[scala-parser-combinators] [info] scala-parser-combinatorsJS -> 
+[scala-parser-combinators] [info] scala-parser-combinators -> 
+[scala-parser-combinators] [info] Building graph...
+[scala-parser-combinators] [info] sorting...
+[scala-parser-combinators] [info] These subprojects will be built: scala-parser-combinators
+[scala-parser-combinators] --== End Extracting dependencies for scala-parser-combinators ==--
+[info] ---== Dependency Information ===---
+[info] Project scala
+[info]   depends on: 
+[info] Project cloc-plugin
+[info]   depends on: scala
+[info] Project scala-parser-combinators
+[info]   depends on: cloc-plugin, scala
+[info] ---== End Dependency Information ===---
+[info] ---==  Repeatable Build Info ==---
+[info]  uuid = 2bac0fa05b2e74c9d70e84acd37f62d87fbe6948
+[info] ---== Repeatable dbuild Configuration ===---
+[info] You can repeat this build (except for -SNAPSHOT references) using this configuration:
+{
+    "build" : {
+        "check-missing" : [],
+        "cross-version" : [],
+        "extraction-version" : "standard",
+        "projects" : [
+            {
+                "check-missing" : [],
+                "cross-version" : [],
+                "deps" : [],
+                "extra" : {
+                    "commands" : [],
+                    "directory" : "",
+                    "exclude" : [],
+                    "extraction-version" : "2.12.10-bin-a5b0aed",
+                    "options" : [],
+                    "post-commands" : [],
+                    "project-specific-all-java-options-combined" : [
+                        "-XX:+CMSClassUnloadingEnabled",
+                        "-XX:+DoEscapeAnalysis",
+                        "-Xms1536m",
+                        "-Xmx1536m",
+                        "-Xss2m",
+                        "-XX:MaxPermSize=640m",
+                        "-XX:ReservedCodeCacheSize=192m"
+                    ],
+                    "projects" : [],
+                    "run-tests" : true,
+                    "sbt-version" : "1.3.0-RC3",
+                    "settings" : [],
+                    "skip-missing-tests" : false,
+                    "test-tasks" : "test"
+                },
+                "name" : "cloc-plugin",
+                "rewrite-overrides" : [],
+                "space" : {
+                    "from" : "scala",
+                    "to" : "scala"
+                },
+                "system" : "sbt",
+                "uri" : "https://github.com/SethTisue/cloc-plugin.git#a61e70d0b2c0439b65d0d40e846e36d03750b9d9",
+                "use-jgit" : false
+            },
+            {
+                "check-missing" : [],
+                "cross-version" : [
+                    "binary"
+                ],
+                "deps" : [],
+                "extra" : {
+                    "parts" : {
+                        "check-missing" : [],
+                        "cross-version" : [],
+                        "extraction-version" : "standard",
+                        "projects" : [
+                            {
+                                "check-missing" : [],
+                                "cross-version" : [],
+                                "deps" : [],
+                                "extra" : {
+                                    "javadoc" : false,
+                                    "main-jar" : true,
+                                    "sources" : true
+                                },
+                                "name" : "scala-library",
+                                "rewrite-overrides" : [],
+                                "set-version" : "2.12.10-bin-a5b0aed",
+                                "space" : {
+                                    "from" : "default",
+                                    "to" : "default"
+                                },
+                                "system" : "aether",
+                                "uri" : "aether:org.scala-lang#scala-library;2.12.10-bin-a5b0aed",
+                                "use-jgit" : false
+                            },
+                            {
+                                "check-missing" : [],
+                                "cross-version" : [],
+                                "deps" : [],
+                                "extra" : {
+                                    "javadoc" : false,
+                                    "main-jar" : true,
+                                    "sources" : false
+                                },
+                                "name" : "scala-reflect",
+                                "rewrite-overrides" : [],
+                                "set-version" : "2.12.10-bin-a5b0aed",
+                                "space" : {
+                                    "from" : "default",
+                                    "to" : "default"
+                                },
+                                "system" : "aether",
+                                "uri" : "aether:org.scala-lang#scala-reflect;2.12.10-bin-a5b0aed",
+                                "use-jgit" : false
+                            },
+                            {
+                                "check-missing" : [],
+                                "cross-version" : [],
+                                "deps" : [],
+                                "extra" : {
+                                    "javadoc" : false,
+                                    "main-jar" : true,
+                                    "sources" : false
+                                },
+                                "name" : "scala-compiler",
+                                "rewrite-overrides" : [],
+                                "set-version" : "2.12.10-bin-a5b0aed",
+                                "space" : {
+                                    "from" : "default",
+                                    "to" : "default"
+                                },
+                                "system" : "aether",
+                                "uri" : "aether:org.scala-lang#scala-compiler;2.12.10-bin-a5b0aed",
+                                "use-jgit" : false
+                            },
+                            {
+                                "check-missing" : [],
+                                "cross-version" : [
+                                    "standard"
+                                ],
+                                "deps" : [],
+                                "extra" : {
+                                    "commands" : [
+                                        "\nset commands ++= {\n  def alterSetting[T](s: State, setting: SettingKey[T])(fn: T => T) = alterKeyImpl(s, setting)(fn)\n  def alterTask[T](s: State, task: TaskKey[T])(fn: T => T) = alterKeyImpl(s, task)(fn)\n  def alterKeyImpl[T](s: State, scopedKey: Scoped)(fn: T => T) = {\n    val extracted = Project extract s\n    import extracted._\n    val r = Project.relation(extracted.structure, true)\n    val allDefs = r._1s.toSeq\n    val scopes = allDefs.filter(_.key == scopedKey.key).map(_.scope).distinct\n    val redefined = (scopedKey: @unchecked) match {\n      case setting: SettingKey[T @unchecked] => scopes.map(scope => setting in scope ~= fn)\n      case task: TaskKey[T @unchecked]       => scopes.map(scope => task in scope ~= fn)\n    }\n    val session = extracted.session.appendRaw(redefined)\n    BuiltinCommands.reapply(session, structure, s)\n  }\n  def appendScalacOptions(s: State, args: Seq[String]): State = {\n    def appendDistinct[A](x: Seq[A], y: Seq[A]) =\n      x.filterNot(y.contains) ++ y\n    alterTask(s, scalacOptions)(appendDistinct(_, args))\n  }\n  def removeScalacOptions(s: State, args: Seq[String]): State =\n    alterTask(s, scalacOptions)(_.filterNot(args.contains))\n  def removeDependency(s: State, args: Seq[String]): State = {\n    require(args.size == 2)\n    alterSetting(s, libraryDependencies)(\n      _.filterNot(mod => mod.organization == args(0) && mod.name == args(1)))\n  }\n  Seq(\n    Command.args(\"appendScalacOptions\", \"<option>\")(appendScalacOptions),\n    Command.args(\"removeScalacOptions\", \"<option>\")(removeScalacOptions),\n    Command.args(\"removeDependency\", \"<org> <artifact>\")(removeDependency))\n}\n",
+                                        "appendScalacOptions ",
+                                        "removeScalacOptions -Xfatal-warnings",
+                                        "set scalaVersion := \"2.12.10-bin-a5b0aed\"",
+                                        "set every ScalaModulePlugin.mimaPreviousVersion := None"
+                                    ],
+                                    "directory" : "",
+                                    "exclude" : [],
+                                    "extraction-version" : "standard",
+                                    "options" : [],
+                                    "post-commands" : [],
+                                    "project-specific-all-java-options-combined" : [
+                                        "-XX:+CMSClassUnloadingEnabled",
+                                        "-XX:+DoEscapeAnalysis",
+                                        "-Xms1536m",
+                                        "-Xmx1536m",
+                                        "-Xss2m",
+                                        "-XX:MaxPermSize=640m",
+                                        "-XX:ReservedCodeCacheSize=192m"
+                                    ],
+                                    "projects" : "xml",
+                                    "run-tests" : true,
+                                    "sbt-version" : "0.13.18",
+                                    "settings" : [],
+                                    "skip-missing-tests" : false,
+                                    "test-tasks" : "test"
+                                },
+                                "name" : "scala-xml",
+                                "rewrite-overrides" : [],
+                                "space" : {
+                                    "from" : "default",
+                                    "to" : "default"
+                                },
+                                "system" : "sbt",
+                                "uri" : "https://github.com/scala/scala-xml.git#2bc3bbcd752d07a5a99d0ff01fcda339278bbaca",
+                                "use-jgit" : false
+                            }
+                        ],
+                        "rewrite-overrides" : [],
+                        "sbt-commands" : [],
+                        "sbt-post-commands" : [],
+                        "sbt-settings" : [],
+                        "sbt-version" : "standard",
+                        "space" : {
+                            "from" : "default",
+                            "to" : "default"
+                        },
+                        "use-jgit" : false
+                    }
+                },
+                "name" : "scala",
+                "rewrite-overrides" : [],
+                "space" : {
+                    "from" : "scala",
+                    "to" : "scala"
+                },
+                "system" : "assemble",
+                "uri" : "nil",
+                "use-jgit" : false
+            },
+            {
+                "check-missing" : [
+                    true,
+                    false
+                ],
+                "cross-version" : [
+                    "disabled",
+                    "standard"
+                ],
+                "deps" : {
+                    "ignore" : [],
+                    "inject" : "com.lightbend#cloc-plugin"
+                },
+                "extra" : {
+                    "commands" : [
+                        "\nset commands ++= {\n  def alterSetting[T](s: State, setting: SettingKey[T])(fn: T => T) = alterKeyImpl(s, setting)(fn)\n  def alterTask[T](s: State, task: TaskKey[T])(fn: T => T) = alterKeyImpl(s, task)(fn)\n  def alterKeyImpl[T](s: State, scopedKey: Scoped)(fn: T => T) = {\n    val extracted = Project extract s\n    import extracted._\n    val r = Project.relation(extracted.structure, true)\n    val allDefs = r._1s.toSeq\n    val scopes = allDefs.filter(_.key == scopedKey.key).map(_.scope).distinct\n    val redefined = (scopedKey: @unchecked) match {\n      case setting: SettingKey[T @unchecked] => scopes.map(scope => setting in scope ~= fn)\n      case task: TaskKey[T @unchecked]       => scopes.map(scope => task in scope ~= fn)\n    }\n    val session = extracted.session.appendRaw(redefined)\n    BuiltinCommands.reapply(session, structure, s)\n  }\n  def appendScalacOptions(s: State, args: Seq[String]): State = {\n    def appendDistinct[A](x: Seq[A], y: Seq[A]) =\n      x.filterNot(y.contains) ++ y\n    alterTask(s, scalacOptions)(appendDistinct(_, args))\n  }\n  def removeScalacOptions(s: State, args: Seq[String]): State =\n    alterTask(s, scalacOptions)(_.filterNot(args.contains))\n  def removeDependency(s: State, args: Seq[String]): State = {\n    require(args.size == 2)\n    alterSetting(s, libraryDependencies)(\n      _.filterNot(mod => mod.organization == args(0) && mod.name == args(1)))\n  }\n  Seq(\n    Command.args(\"appendScalacOptions\", \"<option>\")(appendScalacOptions),\n    Command.args(\"removeScalacOptions\", \"<option>\")(removeScalacOptions),\n    Command.args(\"removeDependency\", \"<org> <artifact>\")(removeDependency))\n}\n",
+                        "appendScalacOptions ",
+                        "removeScalacOptions -Xfatal-warnings",
+                        "set every ScalaModulePlugin.mimaPreviousVersion := None"
+                    ],
+                    "directory" : "",
+                    "exclude" : [],
+                    "extraction-version" : "2.12.10-bin-a5b0aed",
+                    "options" : [],
+                    "post-commands" : [],
+                    "project-specific-all-java-options-combined" : [
+                        "-XX:+CMSClassUnloadingEnabled",
+                        "-XX:+DoEscapeAnalysis",
+                        "-Xms1536m",
+                        "-Xmx1536m",
+                        "-Xss2m",
+                        "-XX:MaxPermSize=640m",
+                        "-XX:ReservedCodeCacheSize=192m"
+                    ],
+                    "projects" : "scala-parser-combinators",
+                    "run-tests" : true,
+                    "sbt-version" : "1.3.0-RC3",
+                    "settings" : "libraryDependencies in ThisBuild += compilerPlugin(\"com.lightbend\" %% \"cloc-plugin\" % \"0.0.2\")",
+                    "skip-missing-tests" : false,
+                    "test-tasks" : "test"
+                },
+                "name" : "scala-parser-combinators",
+                "rewrite-overrides" : [],
+                "space" : {
+                    "from" : "scala.main",
+                    "to" : "scala.main"
+                },
+                "system" : "sbt",
+                "uri" : "https://github.com/scala/scala-parser-combinators.git#fc94acb313c3c187cf837b337f1800b44f662cec",
+                "use-jgit" : false
+            }
+        ],
+        "rewrite-overrides" : [],
+        "sbt-commands" : [],
+        "sbt-post-commands" : [],
+        "sbt-settings" : [],
+        "sbt-version" : "standard",
+        "space" : {
+            "from" : "default",
+            "to" : "default"
+        },
+        "use-jgit" : false
+    },
+    "options" : {
+        "cleanup" : {
+            "build" : {
+                "failure" : 336,
+                "success" : 336
+            },
+            "extraction" : {
+                "failure" : 336,
+                "success" : 336
+            }
+        },
+        "compare" : [],
+        "deploy" : [],
+        "notifications" : {
+            "default" : [],
+            "send" : {
+                "kind" : "console",
+                "projects" : ".",
+                "when" : "always"
+            },
+            "templates" : []
+        },
+        "resolvers" : {
+            "R0000" : "local",
+            "R0001" : "cache-ivy: http://127.0.0.1:8081/artifactory/scala-ci-virtual/, [organisation]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]",
+            "R0002" : "cache: http://127.0.0.1:8081/artifactory/scala-ci-virtual/"
+        },
+        "timeouts" : {
+            "build" : "5 hours",
+            "build-phase" : "16 hours",
+            "dbuild" : "23 hours",
+            "extraction" : "1 hour",
+            "extraction-phase" : "6 hours"
+        }
+    },
+    "properties" : [],
+    "vars" : {}
+}
+
+[info] ---== End Repeatable dbuild Configuration ===---
+[info] ---== Writing dbuild Metadata ===---
+[info] Written SavedConfiguration metadata: meta/build/2bac0fa05b2e74c9d70e84acd37f62d87fbe6948
+[info] ---== End Writing dbuild Metadata ===---
+[info] ---==  End Repeatable Build Info ==---
+[scala] --== Building scala ==--
+[scala] Found cached project build, uuid 1f87fa7a1239f158ab802cfdd84498ca5059274d
+[scala] --== End Building scala ==--
+[cloc-plugin] --== Building cloc-plugin ==--
+[cloc-plugin] Found cached project build, uuid eff2d481a82b2d1af36f8a63dad825ebf3b357e2
+[cloc-plugin] --== End Building cloc-plugin ==--
+[scala-parser-combinators] --== Building scala-parser-combinators ==--
+[scala-parser-combinators] Resolving: https://github.com/scala/scala-parser-combinators.git#fc94acb313c3c187cf837b337f1800b44f662cec in directory: ./target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7
+[scala-parser-combinators] Fetching https://github.com/scala/scala-parser-combinators.git
+[scala-parser-combinators] into /Users/tisue/community.212/clones-0.9.16/74685214534720a482747a89074e8321fa250226-scala-parser-combinators
+[scala-parser-combinators] Took: 00h 00m 00.3s
+[scala-parser-combinators] Cloning /Users/tisue/community.212/clones-0.9.16/74685214534720a482747a89074e8321fa250226-scala-parser-combinators
+[scala-parser-combinators] to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7
+[scala-parser-combinators] Took: 00h 00m 00.0s
+[scala-parser-combinators] Fetching /Users/tisue/community.212/clones-0.9.16/74685214534720a482747a89074e8321fa250226-scala-parser-combinators
+[scala-parser-combinators] into /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7
+[scala-parser-combinators] Took: 00h 00m 00.1s
+[scala-parser-combinators] Resolving artifacts, level 0, space: scala.main
+[scala-parser-combinators] Retrieved from project cloc-plugin (commit: a61e70d0b2c0439b65d0d40e846e36d03750b9d9): 4 artifacts
+[scala-parser-combinators] Retrieved from project scala (commit: none): 11 artifacts
+[scala-parser-combinators] Written RepeatableProjectBuild metadata: meta/project/ca4c9c828d633a7068e721643217149b139492f7
+[scala-parser-combinators] Using sbt version: 1.3.0-RC3
+[scala-parser-combinators:error] Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=640m; support was removed in 8.0
+[scala-parser-combinators] [info] Updated file /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/project/build.properties: set sbt.version to 1.3.0-RC3
+[scala-parser-combinators] [info] Loading settings for project scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7-build-build from ÿÿÿÿÿÿÿÿÿÿ~~~~dbuild~defs.sbt ...
+[scala-parser-combinators] [info] Loading project definition from /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/project/project
+[scala-parser-combinators] [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+[scala-parser-combinators] [info] Loading settings for project scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7-build from ÿÿÿÿÿÿÿÿÿÿ~~~~dbuild~defs.sbt,plugins.sbt ...
+[scala-parser-combinators] [info] Loading project definition from /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/project
+[scala-parser-combinators] [info] Adding resolvers to retrieve build artifacts in one scope
+[scala-parser-combinators] [info] Updating dependencies in one scope
+[scala-parser-combinators] [info] Updating overrides in 2 scopes
+[scala-parser-combinators] [info] Patching the inter-project resolver in one scope
+[scala-parser-combinators] [info] Patching Ivy paths in 2 scopes
+[scala-parser-combinators] [info] Disabling Scala binary checking in 2 scopes
+[scala-parser-combinators] [info] Resetting onLoad... in one scope
+[scala-parser-combinators] [warn] **** Missing dependency: the library org.scala-sbt#scripted-plugin is not provided (in space "") by any project in this configuration file.
+[scala-parser-combinators] [warn] The library (and possibly some of its dependencies) will be retrieved from the external repositories.
+[scala-parser-combinators] [warn] In order to control which version is used, you may want to add this dependency to the dbuild configuration file.
+[scala-parser-combinators] [info] Loading project definition from /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/project
+[scala-parser-combinators] [warn] This sbt plugin is not provided (in space "") by any project within this dbuild config: org.scala-lang.modules#sbt-scala-module (sbtVersion=1.0, scalaVersion=2.12)
+[scala-parser-combinators] [warn] This sbt plugin is not provided (in space "") by any project within this dbuild config: org.scala-js#sbt-scalajs (sbtVersion=1.0, scalaVersion=2.12)
+[scala-parser-combinators] [warn] This sbt plugin is not provided (in space "") by any project within this dbuild config: org.scala-native#sbt-scala-native (sbtVersion=1.0, scalaVersion=2.12)
+[scala-parser-combinators] [warn] This sbt plugin is not provided (in space "") by any project within this dbuild config: org.portable-scala#sbt-scalajs-crossproject (sbtVersion=1.0, scalaVersion=2.12)
+[scala-parser-combinators] [warn] This sbt plugin is not provided (in space "") by any project within this dbuild config: org.portable-scala#sbt-scala-native-crossproject (sbtVersion=1.0, scalaVersion=2.12)
+[scala-parser-combinators] [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+[scala-parser-combinators:error] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/build.sbt:19: warning: method libraryJar in trait ScalaInstance is deprecated: see corresponding Javadoc for more information.
+[scala-parser-combinators:error]     apiMappings += (scalaInstance.value.libraryJar ->
+[scala-parser-combinators:error]                                         ^
+[scala-parser-combinators] [info] Loading settings for project root from ÿÿÿÿÿÿÿÿÿÿ~~~~dbuild~defs.sbt,build.sbt ...
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/)
+[scala-parser-combinators] [info] Adding resolvers to retrieve build artifacts in 4 scopes
+[scala-parser-combinators] [info] Updating dependencies in 4 scopes
+[scala-parser-combinators] [info] Updating overrides in 5 scopes
+[scala-parser-combinators] [info] Preparing Scala binaries: scala-library version 2.12.10-bin-a5b0aed
+[scala-parser-combinators] [info] Setting Scala version to: 2.12.10-bin-a5b0aed in 6 scopes
+[scala-parser-combinators] [info] Setting Scala instance in 4 scopes
+[scala-parser-combinators] [info] Patching the inter-project resolver in 4 scopes
+[scala-parser-combinators] [info] Disabling cross version in 5 scopes
+[scala-parser-combinators] [info] Setting Scala binary version to full in 5 scopes
+[scala-parser-combinators] [info] Patching Ivy paths in 5 scopes
+[scala-parser-combinators] [info] Disabling Scala binary checking in 8 scopes
+[scala-parser-combinators] [info] Resetting publish task in 4 scopes
+[scala-parser-combinators] [info] Updating publishTo repo in 5 scopes
+[scala-parser-combinators] [info] Found publishMavenStyle in 4 scopes; changing publishTo settings accordingly.
+[scala-parser-combinators] [info] Updating version strings in 4 scopes
+[scala-parser-combinators] [info] Resetting onLoad... in one scope
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/)
+[scala-parser-combinators] [info] Defining commands
+[scala-parser-combinators] [info] The new value will be used by no settings or tasks.
+[scala-parser-combinators] [info] Reapplying settings...
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/)
+[scala-parser-combinators] [info] Reapplying settings...
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/)
+[scala-parser-combinators] [info] Reapplying settings...
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/)
+[scala-parser-combinators] [info] Defining Global / mimaPreviousVersion, scala-parser-combinators / mimaPreviousVersion and 1 others.
+[scala-parser-combinators] [info] The new values will be used by scala-parser-combinators / canRunMima, scala-parser-combinators / mimaPreviousArtifacts and 3 others.
+[scala-parser-combinators] [info] 	Run `last` for details.
+[scala-parser-combinators] [info] Reapplying settings...
+[scala-parser-combinators] [info] Set current project to root (in build file:/Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/)
+[scala-parser-combinators] These subprojects will be built: scala-parser-combinators
+[scala-parser-combinators] ----------------------
+[scala-parser-combinators] Processing subproject: scala-parser-combinators
+[scala-parser-combinators] All Dependencies for subproject scala-parser-combinators:
+[scala-parser-combinators]    org.scala-lang:scala-compiler:2.12.10-bin-a5b0aed:scala-tool->default,optional(default)
+[scala-parser-combinators]    org.scala-lang:scala-library:2.12.10-bin-a5b0aed:scala-tool->default,optional(default)
+[scala-parser-combinators]    com.lightbend:cloc-plugin:0.0.1-dbuildxeff2d481a82b2d1af36f8a63dad825ebf3b357e2:plugin->default(compile)
+[scala-parser-combinators]    org.scala-lang:scala-library:2.12.10-bin-a5b0aed
+[scala-parser-combinators]    junit:junit:4.12:test
+[scala-parser-combinators]    com.novocode:junit-interface:0.11:test
+[scala-parser-combinators] Running build: scala-parser-combinators
+[scala-parser-combinators] [info] Wrote /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/scala-parser-combinators-0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.pom
+[scala-parser-combinators] [info] Main Scala API documentation to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/api...
+[scala-parser-combinators] [info] Compiling 30 Scala sources to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/classes ...
+[scala-parser-combinators] ** COMMUNITY BUILD LINE COUNT: 1199
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/PackratParsers.scala:73:46: type parameter T defined in method getFromCache shadows type T defined in class PackratReader. You may want to rename your type parameter, or possibly remove it.
+[scala-parser-combinators] [warn]     private[PackratParsers] def getFromCache[T](p: Parser[T]): Option[MemoEntry[T]] = {
+[scala-parser-combinators] [warn]                                              ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/PackratParsers.scala:77:51: type parameter T defined in method updateCacheAndGet shadows type T defined in class PackratReader. You may want to rename your type parameter, or possibly remove it.
+[scala-parser-combinators] [warn]     private[PackratParsers] def updateCacheAndGet[T](p: Parser[T], w: MemoEntry[T]): MemoEntry[T] = {
+[scala-parser-combinators] [warn]                                                   ^
+[scala-parser-combinators] model contains 65 documentable templates
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/lexical/StdLexical.scala:45:60: match may not be exhaustive.
+[scala-parser-combinators] [warn] It would fail on the following inputs: ~(_, '\''), ~(_, (x: StdLexical.this.Elem forSome x not in '\''))
+[scala-parser-combinators] [warn]     | '\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") }
+[scala-parser-combinators] [warn]                                                            ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/lexical/StdLexical.scala:46:60: match may not be exhaustive.
+[scala-parser-combinators] [warn] It would fail on the following inputs: ~(_, '\"'), ~(_, (x: StdLexical.this.Elem forSome x not in '\"'))
+[scala-parser-combinators] [warn]     | '\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") }
+[scala-parser-combinators] [warn]                                                            ^
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.json
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.json.Parser
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.OnceParser
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.~
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.Parser
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.Error
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] 
+[scala-parser-combinators] 
+[scala-parser-combinators] **********************************************************************
+[scala-parser-combinators] Diagrams will be disabled for this run because the graphviz dot tool
+[scala-parser-combinators] has malfunctioned too many times. These scaladoc flags may help:
+[scala-parser-combinators] 
+[scala-parser-combinators] -diagrams-debug  Show debugging information for the diagram creation process.
+[scala-parser-combinators] -diagrams-dot-path <path>  The path to the dot executable used to generate the inheritance diagrams. Eg: /usr/bin/dot
+[scala-parser-combinators] -diagrams-dot-restart <n>  The number of times to restart a malfunctioning dot process before disabling diagrams (default: 5)
+[scala-parser-combinators] -diagrams-dot-timeout <n>  The timeout before the graphviz dot util is forcefully closed, in seconds (default: 10)
+[scala-parser-combinators] 
+[scala-parser-combinators] Please note that graphviz package version 2.26 or above is required.
+[scala-parser-combinators] **********************************************************************
+[scala-parser-combinators] 
+[scala-parser-combinators] 
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/input/Reader.scala:24:3: Could not find any member to link for "[[java.lang.NoSuchMethodError]]".
+[scala-parser-combinators] [warn]   /** If this is a reader over character sequences, the underlying char sequence.
+[scala-parser-combinators] [warn]   ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/RegexParsers.scala:20:1: Could not find any member to link for "java.lang.String".
+[scala-parser-combinators] [warn] /** The ''most important'' differences between `RegexParsers` and
+[scala-parser-combinators] [warn] ^
+[scala-parser-combinators] [warn] Could not find any member to link for "[[java.lang.NoSuchMethodError]]".
+[scala-parser-combinators] [warn] Could not find any member to link for "[[java.lang.NoSuchMethodError]]".
+[scala-parser-combinators] [warn] four warnings found
+[scala-parser-combinators] [info] Main Scala API documentation successful.
+[scala-parser-combinators] [warn] four warnings found
+[scala-parser-combinators] [info] Done compiling.
+[scala-parser-combinators] [warn] bnd: Unused Private-Package instructions, no such package(s) on the class path: [org.scala-lang.modules.scala-parser-combinators.*]
+[scala-parser-combinators] Running "test" in: scala-parser-combinators
+[scala-parser-combinators] [warn] MiMa will NOT run because no mimaPreviousVersion is provided.
+[scala-parser-combinators] [info] Compiling 30 Scala sources to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/classes ...
+[scala-parser-combinators] ** COMMUNITY BUILD LINE COUNT: 1199
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/PackratParsers.scala:73:46: type parameter T defined in method getFromCache shadows type T defined in class PackratReader. You may want to rename your type parameter, or possibly remove it.
+[scala-parser-combinators] [warn]     private[PackratParsers] def getFromCache[T](p: Parser[T]): Option[MemoEntry[T]] = {
+[scala-parser-combinators] [warn]                                              ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/PackratParsers.scala:77:51: type parameter T defined in method updateCacheAndGet shadows type T defined in class PackratReader. You may want to rename your type parameter, or possibly remove it.
+[scala-parser-combinators] [warn]     private[PackratParsers] def updateCacheAndGet[T](p: Parser[T], w: MemoEntry[T]): MemoEntry[T] = {
+[scala-parser-combinators] [warn]                                                   ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/lexical/StdLexical.scala:45:60: match may not be exhaustive.
+[scala-parser-combinators] [warn] It would fail on the following inputs: ~(_, '\''), ~(_, (x: StdLexical.this.Elem forSome x not in '\''))
+[scala-parser-combinators] [warn]     | '\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") }
+[scala-parser-combinators] [warn]                                                            ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/lexical/StdLexical.scala:46:60: match may not be exhaustive.
+[scala-parser-combinators] [warn] It would fail on the following inputs: ~(_, '\"'), ~(_, (x: StdLexical.this.Elem forSome x not in '\"'))
+[scala-parser-combinators] [warn]     | '\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") }
+[scala-parser-combinators] [warn]                                                            ^
+[scala-parser-combinators] [warn] four warnings found
+[scala-parser-combinators] [info] Done compiling.
+[scala-parser-combinators] [info] Compiling 22 Scala sources to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/test-classes ...
+[scala-parser-combinators] ** COMMUNITY BUILD LINE COUNT: 1003
+[scala-parser-combinators] [warn] there were 21 deprecation warnings (since 1.0.6); re-run with -deprecation for details
+[scala-parser-combinators] [warn] one warning found
+[scala-parser-combinators] [info] Done compiling.
+[scala-parser-combinators] [info] Passed: Total 55, Failed 0, Errors 0, Passed 55
+[scala-parser-combinators] Publishing: scala-parser-combinators
+[scala-parser-combinators] [info] Wrote /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/scala-parser-combinators-0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.pom
+[scala-parser-combinators] [info] Main Scala API documentation to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/api...
+[scala-parser-combinators] [info] Compiling 30 Scala sources to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/jvm/target/scala-2.12/classes ...
+[scala-parser-combinators] ** COMMUNITY BUILD LINE COUNT: 1199
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/PackratParsers.scala:73:46: type parameter T defined in method getFromCache shadows type T defined in class PackratReader. You may want to rename your type parameter, or possibly remove it.
+[scala-parser-combinators] [warn]     private[PackratParsers] def getFromCache[T](p: Parser[T]): Option[MemoEntry[T]] = {
+[scala-parser-combinators] [warn]                                              ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/PackratParsers.scala:77:51: type parameter T defined in method updateCacheAndGet shadows type T defined in class PackratReader. You may want to rename your type parameter, or possibly remove it.
+[scala-parser-combinators] [warn]     private[PackratParsers] def updateCacheAndGet[T](p: Parser[T], w: MemoEntry[T]): MemoEntry[T] = {
+[scala-parser-combinators] [warn]                                                   ^
+[scala-parser-combinators] model contains 65 documentable templates
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/lexical/StdLexical.scala:45:60: match may not be exhaustive.
+[scala-parser-combinators] [warn] It would fail on the following inputs: ~(_, '\''), ~(_, (x: StdLexical.this.Elem forSome x not in '\''))
+[scala-parser-combinators] [warn]     | '\'' ~ rep( chrExcept('\'', '\n', EofCh) ) ~ '\'' ^^ { case '\'' ~ chars ~ '\'' => StringLit(chars mkString "") }
+[scala-parser-combinators] [warn]                                                            ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/lexical/StdLexical.scala:46:60: match may not be exhaustive.
+[scala-parser-combinators] [warn] It would fail on the following inputs: ~(_, '\"'), ~(_, (x: StdLexical.this.Elem forSome x not in '\"'))
+[scala-parser-combinators] [warn]     | '\"' ~ rep( chrExcept('\"', '\n', EofCh) ) ~ '\"' ^^ { case '\"' ~ chars ~ '\"' => StringLit(chars mkString "") }
+[scala-parser-combinators] [warn]                                                            ^
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.json
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.json.Parser
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.OnceParser
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.~
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.Parser
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] Graphviz will be restarted...
+[scala-parser-combinators] 
+[scala-parser-combinators] Graphviz dot encountered an error when generating the diagram for:
+[scala-parser-combinators] scala.util.parsing.combinator.Parsers.Error
+[scala-parser-combinators] These are usually spurious errors, but if you notice a persistent error on
+[scala-parser-combinators] a diagram, please use the -diagrams-debug flag and report a bug with the output.
+[scala-parser-combinators] 
+[scala-parser-combinators] 
+[scala-parser-combinators] **********************************************************************
+[scala-parser-combinators] Diagrams will be disabled for this run because the graphviz dot tool
+[scala-parser-combinators] has malfunctioned too many times. These scaladoc flags may help:
+[scala-parser-combinators] 
+[scala-parser-combinators] -diagrams-debug  Show debugging information for the diagram creation process.
+[scala-parser-combinators] -diagrams-dot-path <path>  The path to the dot executable used to generate the inheritance diagrams. Eg: /usr/bin/dot
+[scala-parser-combinators] -diagrams-dot-restart <n>  The number of times to restart a malfunctioning dot process before disabling diagrams (default: 5)
+[scala-parser-combinators] -diagrams-dot-timeout <n>  The timeout before the graphviz dot util is forcefully closed, in seconds (default: 10)
+[scala-parser-combinators] 
+[scala-parser-combinators] Please note that graphviz package version 2.26 or above is required.
+[scala-parser-combinators] **********************************************************************
+[scala-parser-combinators] 
+[scala-parser-combinators] 
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/input/Reader.scala:24:3: Could not find any member to link for "[[java.lang.NoSuchMethodError]]".
+[scala-parser-combinators] [warn]   /** If this is a reader over character sequences, the underlying char sequence.
+[scala-parser-combinators] [warn]   ^
+[scala-parser-combinators] [warn] /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/shared/src/main/scala/scala/util/parsing/combinator/RegexParsers.scala:20:1: Could not find any member to link for "java.lang.String".
+[scala-parser-combinators] [warn] /** The ''most important'' differences between `RegexParsers` and
+[scala-parser-combinators] [warn] ^
+[scala-parser-combinators] [warn] four warnings found
+[scala-parser-combinators] [info] Done compiling.
+[scala-parser-combinators] [warn] Could not find any member to link for "[[java.lang.NoSuchMethodError]]".
+[scala-parser-combinators] [warn] bnd: Unused Private-Package instructions, no such package(s) on the class path: [org.scala-lang.modules.scala-parser-combinators.*]
+[scala-parser-combinators] [warn] Could not find any member to link for "[[java.lang.NoSuchMethodError]]".
+[scala-parser-combinators] [warn] four warnings found
+[scala-parser-combinators] [info] Main Scala API documentation successful.
+[scala-parser-combinators] [info] 	published scala-parser-combinators to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/.dbuild/local-publish-repo/org/scala-lang/modules/scala-parser-combinators/0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.part/scala-parser-combinators-0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.pom
+[scala-parser-combinators] [info] 	published scala-parser-combinators to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/.dbuild/local-publish-repo/org/scala-lang/modules/scala-parser-combinators/0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.part/scala-parser-combinators-0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.jar
+[scala-parser-combinators] [info] 	published scala-parser-combinators to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/.dbuild/local-publish-repo/org/scala-lang/modules/scala-parser-combinators/0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.part/scala-parser-combinators-0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7-sources.jar
+[scala-parser-combinators] [info] 	published scala-parser-combinators to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/.dbuild/local-publish-repo/org/scala-lang/modules/scala-parser-combinators/0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.part/scala-parser-combinators-0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7-javadoc.jar
+[scala-parser-combinators] [info] 	publish commited: moved /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/.dbuild/local-publish-repo/org/scala-lang/modules/scala-parser-combinators/0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7.part 
+[scala-parser-combinators] [info] 		to /Users/tisue/community.212/target-0.9.16/project-builds/scala-parser-combinators-ca4c9c828d633a7068e721643217149b139492f7/.dbuild/local-publish-repo/org/scala-lang/modules/scala-parser-combinators/0.1.0-dbuildxca4c9c828d633a7068e721643217149b139492f7
+[scala-parser-combinators] --== End Building scala-parser-combinators ==--
+[info] --== Console Notifications ==--
+[info] ---==  Execution Report ==---
+[info] Report from the dbuild run for dbuild: 
+[info] Project cloc-plugin-----------------: SUCCESS (unchanged, not rebuilt)
+[info] Project scala-----------------------: SUCCESS (unchanged, not rebuilt)
+[info] Project scala-parser-combinators----: SUCCESS (project rebuilt ok)
+[info] >>> The dbuild result is----------------: SUCCESS (project rebuilt ok)
+[info] ---==  End Execution Report ==---
+[info] --== Done Console Notifications ==--
+[info] ---==  Tasks Report ==---
+[info] Successful: Deploy, Comparison, Notifications
+[info] ---==  End Tasks Report ==---
+Shutting down, please wait...
+Result: SUCCESS (project rebuilt ok)
+Build succeeded after: 00h 00m 58.0s
+All done.
+The repeatable UUID of this build was: 2bac0fa05b2e74c9d70e84acd37f62d87fbe6948
+removing temporary files...
+Lines of Scala code recompiled during this run only:
+     4600 scala-parser-combinators
+     4600 TOTAL
+SUCCEEDED: 3
+FAILED: 0
+DID NOT RUN: 0
+TOTAL: 3
+~/community.212 %                                                                                         [2.12.x|✚1…1]
