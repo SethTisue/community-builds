@@ -120,7 +120,6 @@ grizzled: cloc-plugin, scala, scala-collection-compat, scala-xml, scalacheck, sc
 scalatex: acyclic, cloc-plugin, fastparse-scalameta, portable-scala-reflect, scala, scala-xml, scalatags, sourcecode, utest
 classutil: cloc-plugin, grizzled, scala, scala-collection-compat, scala-xml, scalacheck, scalatest, scalatest-3-0, wartremover
 coursier: argonaut, argonaut-shapeless, cloc-plugin, coursier-cache, coursier-core, coursier-util, scala, scala-xml, shapeless
-airframe: airspec, cloc-plugin, scala, scala-collection-compat, scala-parallel-collections, scala-parser-combinators, scalacheck
 cachecontrol: cloc-plugin, scala, scala-collection-compat, scala-parser-combinators, scala-xml, scalacheck, scalatest, scalatest-3-0
 scalariform: cloc-plugin, scala, scala-collection-compat, scala-parser-combinators, scala-xml, scalacheck, scalatest, scalatest-3-0
 jsoniter-scala: cloc-plugin, expression-evaluator, scala, scala-collection-compat, scala-xml, scalacheck, scalatest, scalatestplus-scalacheck
