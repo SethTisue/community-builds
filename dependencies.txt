@@ -104,7 +104,6 @@ jsoniter-scala: cloc-plugin, expression-evaluator, mima, munit, scala, scala-col
 classutil: cloc-plugin, grizzled, mima, munit, scala, scala-collection-compat, scalacheck, scalatest, wartremover
 scala-xml-quote: acyclic, cloc-plugin, fastparse, portable-scala-reflect, scala, scalacheck, scalatest, sourcecode, utest
 scalapb: acyclic, cloc-plugin, fastparse, portable-scala-reflect, scala, scalacheck, scalatest, sourcecode, utest
-airframe: cloc-plugin, mima, munit, scala, scala-collection-compat, scala-parser-combinators, scalacheck, scalatest
 export-hook: cloc-plugin, kind-projector, macro-compat, macro-paradise, scala, scalacheck, scalatest, shapeless, simulacrum
 specs2: cloc-plugin, kind-projector, portable-scala-reflect, scala, scala-js-stubs, scala-parser-combinators, scalacheck
 scalasti: classutil, cloc-plugin, grizzled, mima, munit, scala, scala-collection-compat, scalacheck, scalatest, wartremover
